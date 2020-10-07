@@ -2,6 +2,8 @@ package com.hsbc.meetopia.model;
 
 public class Amenities {
 	
+	private String roomId;
+	
 	private boolean projector;
 	
 	private boolean wifiConnection;
@@ -16,6 +18,18 @@ public class Amenities {
 	
 	private boolean coffeeMachine;
 	
+	
+	public Amenities(String roomId, boolean projector, boolean wifiConnection, boolean conferenceCallFacility, boolean whiteboard, boolean waterDispenser, boolean tv, boolean coffeeMachine) {
+		
+		this.roomId = roomId;
+		this.projector = projector;
+		this.wifiConnection = wifiConnection;
+		this.conferenceCallFacility = conferenceCallFacility;
+		this.whiteboard = whiteboard;
+		this.waterDispenser = waterDispenser;
+		this.tv = tv;
+		this.coffeeMachine = coffeeMachine;
+	}
 	
 	public Amenities(boolean projector, boolean wifiConnection, boolean conferenceCallFacility, boolean whiteboard, boolean waterDispenser, boolean tv, boolean coffeeMachine) {
 		this.projector = projector;

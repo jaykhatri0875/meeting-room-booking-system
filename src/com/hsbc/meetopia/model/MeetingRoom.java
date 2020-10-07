@@ -2,6 +2,10 @@ package com.hsbc.meetopia.model;
 
 public class MeetingRoom {
 	
+	private String uId;
+	
+	private String userId;
+	
 	private String meetingName;
 	
 	private int seatingCapacity;
@@ -12,7 +16,17 @@ public class MeetingRoom {
 	
 	private Amenities amenities;
 	
-	public MeetingRoom(String meetingName, int seatingCapacity, int ratings, double costPerHour, Amenities amenities) {
+	public MeetingRoom(String uId, String meetingName, int seatingCapacity, int ratings, double costPerHour, Amenities amenities) {
+		
+		this.uId = uId;
+		this.meetingName = meetingName;
+		this.seatingCapacity = seatingCapacity;
+		this.ratings = ratings;
+		this.costPerHour = costPerHour;
+		this.amenities = amenities;
+	}
+	
+public MeetingRoom(String meetingName, int seatingCapacity, int ratings, double costPerHour, Amenities amenities) {
 		
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
@@ -67,6 +81,14 @@ public MeetingRoom(String meetingName, int seatingCapacity, double costPerHour, 
 	
 	public void setAmenities(Amenities amenities) {
 		this.amenities = amenities;
+	}
+
+	public String getuId() {
+		return uId;
+	}
+
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
 
 	@Override
