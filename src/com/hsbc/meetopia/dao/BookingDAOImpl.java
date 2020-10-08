@@ -1,3 +1,8 @@
+/**
+ * @author ClanOctate
+ * @purpose DAO layer implementation for booking information
+ */
+
 package com.hsbc.meetopia.dao;
 
 import java.sql.Connection;
@@ -10,6 +15,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.hsbc.meetopia.exception.BookingNotFoundException;
 import com.hsbc.meetopia.model.Booking;
 
 
@@ -29,6 +35,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 		
 	private static Connection getDBConnection() {
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection connection = DriverManager.getConnection(DB_URL, username, password);
@@ -39,11 +46,11 @@ public class BookingDAOImpl implements BookingDAO {
 			e.printStackTrace();
 		}
 		return null;
+		
 	}
 	
-	
 	@Override
-	public Booking saveBooking( Booking booking ) {
+	public boolean saveBooking( Booking booking ) {
 		
 		int numberOfRecordsUpdated = 0;
 		
@@ -61,36 +68,56 @@ public class BookingDAOImpl implements BookingDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		if (numberOfRecordsUpdated == 1) {
-			try {
-				User fetchedUser = fetchUserByName(localUser.getName());
-				if(fetchedUser != null) {
-					return fetchedUser;
-				}
-			} catch (UserNotFoundException e) {
-				e.printStackTrace();
-			}
+			return true;	
 		}
-		return null;
+		return false;
 	}
-
 
 	
 	@Override
-	public User fetchUserByUID(long profileId) throws UserNotFoundException {
-		try(PreparedStatement pStmt = getDBConnection().prepareStatement(SELECT_BY_ID_QUERY);){
-			pStmt.setLong(1, profileId);
+	public Booking fetchBookingByUID(String uID) throws BookingNotFoundException {
+		
+		try(PreparedStatement pStmt = getDBConnection().prepareStatement(SELECT_BY_UID_QUERY);) {
+			
+			pStmt.setString(1, uID);
 			ResultSet rs = pStmt.executeQuery();
+			
 			if(rs.next()) {
-				User user = new User(rs.getString("name"), rs.getString("phone_number"), rs.getDate("dob").toLocalDate(), rs.getString("password"));
-				return user;
+
+				Booking booking = new Booking(rs.getString("room_no"), rs.getDate("dateOfBooking").toLocalDate(),
+						rs.getLong("start_time"), rs.getLong("end_time"), rs.getString("booked_by"));
+				return booking;
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new UserNotFoundException("User with Profile ID : " + profileId + " does not exist");
+			throw new BookingNotFoundException("Booking with ID " + uID + " does not exist.");
 		}
 		return null;
 	}
 	
-
+	@Override
+	public Collection<Booking> fetchBookings() {
+		
+		Set<Booking> bookingsSet = new HashSet<>();
+		
+		try (PreparedStatement pStmt = getDBConnection().prepareStatement(SELECT_QUERY);){
+			
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Booking booking = new Booking(rs.getString("room_no"), rs.getDate("dateOfBooking").toLocalDate(),
+						rs.getLong("start_time"), rs.getLong("end_time"), rs.getString("booked_by"));
+				bookingsSet.add(booking);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bookingsSet;
+	}
+	
 }
