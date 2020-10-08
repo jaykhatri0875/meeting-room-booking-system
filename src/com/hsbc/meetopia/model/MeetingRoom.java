@@ -12,11 +12,11 @@ public class MeetingRoom {
 	
 	private int ratings;
 	
-	private double costPerHour;
+	private int costPerHour;
 	
 	private Amenities amenities;
 	
-	public MeetingRoom(String uId, String meetingName, int seatingCapacity, int ratings, double costPerHour, Amenities amenities) {
+	public MeetingRoom(String uId, String meetingName, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
 		
 		this.uId = uId;
 		this.meetingName = meetingName;
@@ -26,7 +26,7 @@ public class MeetingRoom {
 		this.amenities = amenities;
 	}
 	
-public MeetingRoom(String meetingName, int seatingCapacity, int ratings, double costPerHour, Amenities amenities) {
+public MeetingRoom(String meetingName, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
 		
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
@@ -35,7 +35,7 @@ public MeetingRoom(String meetingName, int seatingCapacity, int ratings, double 
 		this.amenities = amenities;
 	}
 	
-public MeetingRoom(String meetingName, int seatingCapacity, double costPerHour, Amenities amenities) {
+public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour, Amenities amenities) {
 		
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
@@ -67,11 +67,11 @@ public MeetingRoom(String meetingName, int seatingCapacity, double costPerHour, 
 		this.ratings = ratings;
 	}
 	
-	public double getCostPerHour() {
+	public int getCostPerHour() {
 		return costPerHour;
 	}
 	
-	public void setCostPerHour(double costPerHour) {
+	public void setCostPerHour(int costPerHour) {
 		this.costPerHour = costPerHour;
 	}
 	
@@ -89,6 +89,10 @@ public MeetingRoom(String meetingName, int seatingCapacity, double costPerHour, 
 
 	public void setuId(String uId) {
 		this.uId = uId;
+	}
+
+	public String getUserId() {
+		return userId;
 	}
 
 	@Override
