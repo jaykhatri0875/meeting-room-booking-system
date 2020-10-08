@@ -4,27 +4,19 @@ import java.util.UUID;
 
 public class Meeting {
 
-	enum Type {
-		CLASSROOM_TRAINING, ONLINE_TRAINING, CONFERENCE_CALL, BUSINESS
-	}
-
 	private final String uID;
 	private String title;
-	private String startTime;
-	private String endTime;
-	private Type type;
+	private MeetingType type;
 	private User[] attendees;
-	private String bookingId;
+	private Booking booking;
 
-	public Meeting(String title, String startTime, String endTime, Type type, User[] attendees, String bookingId) {
+	public Meeting(String title, MeetingType type, User[] attendees, Booking booking) {
 		super();
 		this.uID = generateUID();
 		this.title = title;
-		this.startTime = startTime;
-		this.endTime = endTime;
 		this.type = type;
 		this.attendees = attendees;
-		this.bookingId = bookingId;
+		this.booking = booking;
 	}
 
 	public String generateUID() {
@@ -39,27 +31,11 @@ public class Meeting {
 		this.title = title;
 	}
 
-	public String getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-
-	public String getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
-
-	public Type getType() {
+	public MeetingType getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(MeetingType type) {
 		this.type = type;
 	}
 
@@ -71,12 +47,12 @@ public class Meeting {
 		this.attendees = attendees;
 	}
 
-	public String getBookingId() {
-		return bookingId;
+	public Booking getBooking() {
+		return booking;
 	}
 
-	public void setBookingId(String bookingId) {
-		this.bookingId = bookingId;
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 
 	public String getuID() {
