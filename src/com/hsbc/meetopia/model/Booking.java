@@ -1,8 +1,3 @@
-/**
- * @author Nikhil Saboo
- * @purpose Entity class for booking information
- */
-
 package com.hsbc.meetopia.model;
 
 import java.util.UUID;
