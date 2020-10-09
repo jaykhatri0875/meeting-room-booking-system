@@ -1,8 +1,3 @@
-/**
- * @author ClanOctate
- * @purpose Entity class for booking information
- */
-
 package com.hsbc.meetopia.model;
 
 import java.time.LocalDate;
@@ -26,6 +21,16 @@ public class Booking {
 		this.endTime = endTime;
 		this.bookedBy = bookedBy;
 	}
+	
+	public Booking(String uID, String roomId, long startTime, long endTime, String bookedBy) {
+		super();
+		this.uID = uID;
+		this.roomId = roomId;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.bookedBy = bookedBy;
+	}
+
 
 	public String getRoomId() {
 		return roomId;
