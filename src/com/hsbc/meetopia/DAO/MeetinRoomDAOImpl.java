@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.hsbc.meetopia.model.*;
+import com.hsbc.meetopia.util.DatabaseConnection;
 
 public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 
