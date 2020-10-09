@@ -1,0 +1,16 @@
+.container {
+    margin-top: 2.5vw;
+}
+
+.container h3 {
+    color: gray;
+}
+
+.jumbotron {
+    height: 22vh;
+}
+
+.jumbotron .container {
+    color: black;
+}
+
