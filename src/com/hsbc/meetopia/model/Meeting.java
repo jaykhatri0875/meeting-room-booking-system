@@ -19,6 +19,13 @@ public class Meeting {
 		this.booking = booking;
 	}
 
+	public Meeting(String uID, String title, Booking booking) {
+		super();
+		this.uID = uID;
+		this.title = title;
+		this.booking = booking;
+	}
+
 	public String generateUID() {
 		return UUID.randomUUID().toString();
 	}
