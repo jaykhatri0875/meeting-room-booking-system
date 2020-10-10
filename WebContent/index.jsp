@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,10 +43,10 @@
       <ul class="nav nav-pills flex-column">
         
         <li class="nav-item">
-          <a class="nav-link" href="importUsers.html" target="_blank">Step1 - Import a JSON File</a>
+          <a class="nav-link" href="importUsers.jsp" target="_blank">Step1 - Import a JSON File</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.html" target="_blank">Step2 - after Importing  - Now LOGIN</a>
+          <a class="nav-link" href="login.jsp" target="_blank">Step2 - after Importing  - Now LOGIN</a>
         </li>
       </ul>
       <hr class="d-sm-none">

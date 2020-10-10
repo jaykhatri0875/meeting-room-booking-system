@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 <div class="container" style="position: relative; margin-top: 200px; background-color: rgb(255, 61, 61); width: 800px; height: 310px;">
   <h2>Meetopia - Login</h2>
   <p></p>
-  <form action="index.html" class="needs-validation" novalidate> <!--here please add url of any other file, i have just redirected it to index.html-->
+  <form action="index.jsp" class="needs-validation" novalidate> <!--here please add url of any other file, i have just redirected it to index.jsp-->
     <div class="form-group">
       <label for="uname" style="color:ghostwhite;">User-ID:</label>
       <input type="text" class="form-control" id="uname" placeholder="Enter User-ID" name="uname" required>
