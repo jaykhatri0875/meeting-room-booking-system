@@ -1,28 +1,36 @@
-/**
- * @author Nikhil Saboo
- * @purpose Entity class for booking information
- */
-
 package com.hsbc.meetopia.model;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Booking {
-
+	
 	private final String uID;
 	private String roomId;
-	private long startTime; // in milliseconds (with in-built date)
-	private long endTime; // can be easily converted to any date format
+	private LocalDate bookingDate;
+	private long startTime; // in milliseconds (with in-built bookingDate)
+	private long endTime; // can be easily converted to any bookingDate format
 	private String bookedBy;
 
-	public Booking(String roomId, long startTime, long endTime, String bookedBy) {
+	public Booking(String roomId, LocalDate bookingDate, long startTime, long endTime, String bookedBy) {
 		super();
 		this.uID = generateUID();
+		this.roomId = roomId;
+		this.bookingDate = bookingDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.bookedBy = bookedBy;
+	}
+	
+	public Booking(String uID, String roomId, long startTime, long endTime, String bookedBy) {
+		super();
+		this.uID = uID;
 		this.roomId = roomId;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.bookedBy = bookedBy;
 	}
+
 
 	public String getRoomId() {
 		return roomId;
@@ -30,6 +38,14 @@ public class Booking {
 
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
+	}
+	
+	public LocalDate getDate() {
+		return bookingDate;
+	}
+
+	public void setDate(LocalDate bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 	public long getStartTime() {
@@ -87,6 +103,12 @@ public class Booking {
 
 	public String generateUID() {
 		return UUID.randomUUID().toString();
+	}
+
+	@Override
+	public String toString() {
+		return "Booking [uID=" + uID + ", roomId=" + roomId + ", bookingDate=" + bookingDate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", bookedBy=" + bookedBy + "]";
 	}
 
 }

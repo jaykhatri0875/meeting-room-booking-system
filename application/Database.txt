@@ -1,0 +1,13 @@
+String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+String DB_URL = "jdbc:mysql://db4free.net:3306/codefury";
+Class.forName("com.mysql.jdbc.Driver");
+
+   //  Database credentials
+    String USER = 'codefury'
+    String PASS = 'codefury'
+
+conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+website - db4free.net/phpMyAdmin
+username codefury
+password - codefury
