@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save & Continue</button> <a href="./manager-page.html ml-1" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save & Continue</button> <a href="./manager-page.jsp ml-1" class="btn btn-danger">Cancel</a>
                       </form>
                 </div>
             </div>
