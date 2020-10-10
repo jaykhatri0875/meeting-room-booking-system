@@ -16,7 +16,7 @@ public interface BookingService {
 		return new BookingServiceImpl();
 	}
 	
-	boolean saveBooking(Booking booking);
+	Booking saveBooking(Booking booking);
 	
 	Booking fetchBookingByUID(String uID) throws BookingNotFoundException;
 	
