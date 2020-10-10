@@ -19,8 +19,8 @@ public class MeetingDAO {
 			+ "meeting.booking_info = booking_info.uid";
 	private static final String INSERT_MEETING = "insert into meeting (uid,title,booking_info,typeOfMeeting) values (?,?,?,?)";
 	private static final String INSERT_ATTENDEE = "insert into list_of_people (uid,userid) values(?,?)";
-	private static final String SELECT_MEETING_BY_USERID = "select uid from list_of_people where userid=?";
-	private static final String SELECT_MEETING_BY_MEETINGID = "select meeting.uid,meeting.title,booking_info.room_no,booking_info.dateOfBooking,"
+	private static final String SELECT_MEETING_BY_USERID = "SELECT uid from list_of_people where user_uid = ?";
+	private static final String SELECT_MEETING_BY_MEETINGID = "select meeting.uid,meeting.title,booking_info.room_no,"
 			+ "booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
 			+ "meeting.booking_info = booking_info.uid where meeting.uid=?";
 
@@ -65,8 +65,9 @@ public class MeetingDAO {
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					Booking booking = new Booking(rs.getString("booking_info.uid"),
-							rs.getString("booking_info.room_no"), rs.getLong("booking_info.start_time"),
-							rs.getLong("booking_info.end_time"), rs.getString("booking_info.booked_by"));
+							rs.getString("booking_info.room_no"), rs.getDate("booking_info.date"),
+							rs.getTime("booking_info.start_time"), rs.getTime("booking_info.end_time"),
+							rs.getString("booking_info.booked_by"));
 					meetings.add(new Meeting(rs.getString("meeting.uid"), rs.getString("meeting.title"), booking));
 				}
 				return meetings;
@@ -104,9 +105,9 @@ public class MeetingDAO {
 				statement.setString(1, meetingId);
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
-					Booking booking = new Booking(rs.getString("booking_info.uid"),
-							rs.getString("booking_info.room_no"), rs.getLong("booking_info.start_time"),
-							rs.getLong("booking_info.end_time"), rs.getString("booking_info.booked_by"));
+					Booking booking = new Booking(rs.getString("uid"), rs.getString("booking_info.room_no"),
+							rs.getDate("booking_info.date"), rs.getTime("booking_info.start_time"),
+							rs.getTime("booking_info.end_time"), rs.getString("booking_info.booked_by"));
 					Meeting meeting = new Meeting(rs.getString("meeting.uid"), rs.getString("meeting.title"), booking);
 					return meeting;
 				}

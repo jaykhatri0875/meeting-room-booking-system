@@ -1,18 +1,19 @@
 package com.hsbc.meetopia.model;
 
-import java.time.LocalDate;
+import java.sql.Time;
+import java.util.Date;
 import java.util.UUID;
 
 public class Booking {
-	
+
 	private final String uID;
 	private String roomId;
-	private LocalDate bookingDate;
-	private long startTime; // in milliseconds (with in-built bookingDate)
-	private long endTime; // can be easily converted to any bookingDate format
+	private Date bookingDate;
+	private Time startTime;
+	private Time endTime;
 	private String bookedBy;
 
-	public Booking(String roomId, LocalDate bookingDate, long startTime, long endTime, String bookedBy) {
+	public Booking(String roomId, Date bookingDate, Time startTime, Time endTime, String bookedBy) {
 		super();
 		this.uID = generateUID();
 		this.roomId = roomId;
@@ -21,8 +22,8 @@ public class Booking {
 		this.endTime = endTime;
 		this.bookedBy = bookedBy;
 	}
-	
-	public Booking(String uID, String roomId, long startTime, long endTime, String bookedBy) {
+
+	public Booking(String uID, String roomId, Date bookingDate, Time startTime, Time endTime, String bookedBy) {
 		super();
 		this.uID = uID;
 		this.roomId = roomId;
@@ -31,7 +32,6 @@ public class Booking {
 		this.bookedBy = bookedBy;
 	}
 
-
 	public String getRoomId() {
 		return roomId;
 	}
@@ -39,28 +39,28 @@ public class Booking {
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
-	
-	public LocalDate getDate() {
+
+	public Date getDate() {
 		return bookingDate;
 	}
 
-	public void setDate(LocalDate bookingDate) {
+	public void setDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
-	public long getStartTime() {
+	public Time getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(long startTime) {
+	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
 
-	public long getEndTime() {
+	public Time getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(long endTime) {
+	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
 
@@ -107,8 +107,8 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [uID=" + uID + ", roomId=" + roomId + ", bookingDate=" + bookingDate + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", bookedBy=" + bookedBy + "]";
+		return "Booking [uID=" + uID + ", roomId=" + roomId + ", bookingDate=" + bookingDate + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", bookedBy=" + bookedBy + "]";
 	}
 
 }
