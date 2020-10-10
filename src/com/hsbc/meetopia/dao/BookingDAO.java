@@ -3,7 +3,7 @@
  * @purpose DAO layer interface for booking information
  */
 
-package com.hsbc.meetopia.dao;
+package com.hsbc.meetopia.DAO;
 
 import java.util.Collection;
 
@@ -16,7 +16,7 @@ public interface BookingDAO {
 		return new BookingDAOImpl();
 	}
 	
-	boolean saveBooking(Booking booking);
+	Booking saveBooking(Booking booking);
 	
 	Booking fetchBookingByUID(String uID) throws BookingNotFoundException;
 	
