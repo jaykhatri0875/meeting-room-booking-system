@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 <div class="container mt-3" style="margin-top: 200px; margin-left: 400px; background-color: rgb(255, 61, 61); width: 500px; height: 300px;">
   <h2>Import Users from a JSON File</h2>
   <p>To import a JSON file which has the users info: </p>
-  <form action="index.html"> <!--here the url of another file can be added, i just redirected it to index.html-->
+  <form action="importjson" method="POST"> <!--here the url of another file can be added, i just redirected it to index.jsp-->
     <p>JSON file:</p>
     <div class="custom-file mb-3">
       <input type="file" class="custom-file-input" id="customFile" name="filename" required>
@@ -33,7 +35,7 @@
 //the following code reflects the name of the file appear on select
 $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  $(this).siblings(".custom-file-label").addClass("selected").jsp(fileName);
 });
 </script>
 
