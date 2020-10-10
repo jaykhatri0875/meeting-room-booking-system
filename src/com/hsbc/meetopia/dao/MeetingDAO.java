@@ -25,7 +25,7 @@ public class MeetingDAO {
 			+ "meeting.booking_info = booking_info.uid where meeting.uid=?";
 
 	public Meeting createMeeting(Meeting meeting) {
-		Connection connection = DatabaseUtils.getConnection();
+		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			try {
 				connection.setAutoCommit(false);
@@ -57,7 +57,7 @@ public class MeetingDAO {
 	}
 
 	public Collection<Meeting> fetchMeetings() {
-		Connection connection = DatabaseUtils.getConnection();
+		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			List<Meeting> meetings = new ArrayList<>();
 			try {
@@ -78,7 +78,7 @@ public class MeetingDAO {
 	}
 
 	public Collection<String> fetchMeetingsByUserId(String userId) {
-		Connection connection = DatabaseUtils.getConnection();
+		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			List<String> meetings = new ArrayList<>();
 			try {
@@ -97,7 +97,7 @@ public class MeetingDAO {
 	}
 
 	public Meeting fetchMeetingByMeetingId(String meetingId) {
-		Connection connection = DatabaseUtils.getConnection();
+		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			try {
 				PreparedStatement statement = connection.prepareStatement(SELECT_MEETING_BY_MEETINGID);
