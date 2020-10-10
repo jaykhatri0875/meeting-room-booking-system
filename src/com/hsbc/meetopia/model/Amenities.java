@@ -2,22 +2,39 @@ package com.hsbc.meetopia.model;
 
 public class Amenities {
 	
-	private boolean projector;
+	private String uid;
 	
-	private boolean wifiConnection;
+	private String roomId;
 	
-	private boolean conferenceCallFacility;
+	private int projector;
 	
-	private boolean whiteboard;
+	private int wifiConnection;
 	
-	private boolean waterDispenser;
+	private int conferenceCallFacility;
 	
-	private boolean tv;
+	private int whiteboard;
 	
-	private boolean coffeeMachine;
+	private int waterDispenser;
+	
+	private int tv;
+	
+	private int coffeeMachine;
 	
 	
-	public Amenities(boolean projector, boolean wifiConnection, boolean conferenceCallFacility, boolean whiteboard, boolean waterDispenser, boolean tv, boolean coffeeMachine) {
+	public Amenities(String uid, String roomId, int projector, int wifiConnection, int conferenceCallFacility, int whiteboard, int waterDispenser, int tv, int coffeeMachine) {
+		
+		this.uid = uid;
+		this.roomId = roomId;
+		this.projector = projector;
+		this.wifiConnection = wifiConnection;
+		this.conferenceCallFacility = conferenceCallFacility;
+		this.whiteboard = whiteboard;
+		this.waterDispenser = waterDispenser;
+		this.tv = tv;
+		this.coffeeMachine = coffeeMachine;
+	}
+	
+	public Amenities(int projector, int wifiConnection, int conferenceCallFacility, int whiteboard, int waterDispenser, int tv, int coffeeMachine) {
 		this.projector = projector;
 		this.wifiConnection = wifiConnection;
 		this.conferenceCallFacility = conferenceCallFacility;
@@ -27,59 +44,71 @@ public class Amenities {
 		this.coffeeMachine = coffeeMachine;
 	}
 
-	public boolean isProjector() {
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
+	public String getRoomId() {
+		return roomId;
+	}
+
+	public int isProjector() {
 		return projector;
 	}
 
-	public void setProjector(boolean projector) {
+	public void setProjector(int projector) {
 		this.projector = projector;
 	}
 
-	public boolean isWifiConnection() {
+	public int isWifiConnection() {
 		return wifiConnection;
 	}
 
-	public void setWifiConnection(boolean wifiConnection) {
+	public void setWifiConnection(int wifiConnection) {
 		this.wifiConnection = wifiConnection;
 	}
 
-	public boolean isConferenceCallFacility() {
+	public int isConferenceCallFacility() {
 		return conferenceCallFacility;
 	}
 
-	public void setConferenceCallFacility(boolean conferenceCallFacility) {
+	public void setConferenceCallFacility(int conferenceCallFacility) {
 		this.conferenceCallFacility = conferenceCallFacility;
 	}
 
-	public boolean isWhiteboard() {
+	public int isWhiteboard() {
 		return whiteboard;
 	}
 
-	public void setWhiteboard(boolean whiteboard) {
+	public void setWhiteboard(int whiteboard) {
 		this.whiteboard = whiteboard;
 	}
 
-	public boolean isWaterDispenser() {
+	public int isWaterDispenser() {
 		return waterDispenser;
 	}
 
-	public void setWaterDispenser(boolean waterDispenser) {
+	public void setWaterDispenser(int waterDispenser) {
 		this.waterDispenser = waterDispenser;
 	}
 
-	public boolean isTv() {
+	public int isTv() {
 		return tv;
 	}
 
-	public void setTv(boolean tv) {
+	public void setTv(int tv) {
 		this.tv = tv;
 	}
 
-	public boolean isCoffeeMachine() {
+	public int isCoffeeMachine() {
 		return coffeeMachine;
 	}
 
-	public void setCoffeeMachine(boolean coffeeMachine) {
+	public void setCoffeeMachine(int coffeeMachine) {
 		this.coffeeMachine = coffeeMachine;
 	}
 
