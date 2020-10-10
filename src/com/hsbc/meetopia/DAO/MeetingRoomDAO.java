@@ -1,6 +1,5 @@
-package com.hsbc.meetopia.dao;
+package com.hsbc.meetopia.DAO;
 
-import java.sql.Connection;
 import java.util.*;
 
 import com.hsbc.meetopia.model.*;

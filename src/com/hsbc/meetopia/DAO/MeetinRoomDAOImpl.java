@@ -1,4 +1,4 @@
-package com.hsbc.meetopia.dao;
+package com.hsbc.meetopia.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
