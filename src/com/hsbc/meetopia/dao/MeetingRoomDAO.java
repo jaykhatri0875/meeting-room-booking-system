@@ -1,4 +1,4 @@
-package com.hsbc.meetopia.DAO;
+package com.hsbc.meetopia.dao;
 
 import java.util.*;
 

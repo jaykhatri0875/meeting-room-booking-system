@@ -2,7 +2,7 @@ package com.hsbc.meetopia.service;
 
 import java.util.Collection;
 
-import com.hsbc.meetopia.DAO.MeetingRoomDAO;
+import com.hsbc.meetopia.dao.MeetingRoomDAO;
 import com.hsbc.meetopia.model.Amenities;
 import com.hsbc.meetopia.model.MeetingRoom;
 

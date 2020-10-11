@@ -1,4 +1,4 @@
-package com.hsbc.meetopia.servlets;
+package com.hsbc.meetopia.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
