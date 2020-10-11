@@ -43,17 +43,107 @@
             document.getElementById("cancel").innerHTML = txt;
           }
     
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "150px";
+          
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+        }
+
+        function goBack() {
+          window.history.back();
+        }
   </script>
 
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidebar {
+    height: 90%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 100px;
+    left: 0;
+    background-color:#111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 28px;
+    margin-left: 5px;
+  }
+  
+  .openbtn {
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    margin-left: 20px;
+    position:sticky;
+  
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  #main {
+    transition: margin-left .1s;
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 15px;}
+  }
+  </style>
 
 </head>
 
 <body>
 
-                            <!--Starting of navigational bar-->
-    <nav class="navbar navbar-expand-sm bg-danger navbar-dark" style="height: 80px;"> 
-        <a class="navbar-brand"><h1 style="margin-left: 90px;">Meetopia</h1></a>
-    </nav>
+                            
+      <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="Admin_Page.jsp">ADMIN PAGE</a>
+            
+            <a href="#">LOGOUT</a>
+      </div>
+                        
+                           <!--Starting of navigational bar-->
+                           
+      <nav class="navbar navbar-expand-sm bg-danger navbar-dark" style="height: 100px;">
+            <button class="openbtn" onclick="openNav()">☰</button> 
+            <a class="navbar-brand"><h1 style="margin-left: 90px;">Meetopia</h1></a>
+                                 
+      </nav>
                             <!--End of navigational bar-->
     <div>
         <h4 style="margin-left: 420px; margin-top: 30px; font-family: Georgia, 'Times New Roman', Times, serif;">This screen allows admin to create meeting rooms</h4>
@@ -62,6 +152,11 @@
 
     </br>
     </br>
+
+    <div>
+      <button onclick="goBack()" style="margin-left: 1200px;">Back</button>
+    </div>
+  </br>
                               <!--starting of form-->
 
     <div class="card" style="width: 500px; margin-left: 400px;" >
