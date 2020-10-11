@@ -14,32 +14,32 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>listMeetings</servlet-name>
+		<servlet-name>ListMeetings</servlet-name>
 		<servlet-class>com.hsbc.meetopia.servlet.ListMeetingsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>listMeetings</servlet-name>
-		<url-pattern>/listMeetings</url-pattern>
+		<servlet-name>ListMeetings</servlet-name>
+		<url-pattern>/ListMeetings</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>createMeeting</servlet-name>
+		<servlet-name>CreateMeeting</servlet-name>
 		<servlet-class>com.hsbc.meetopia.servlet.OrganiseMeetingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>createMeeting</servlet-name>
-		<url-pattern>/createMeeting</url-pattern>
+		<servlet-name>CreateMeeting</servlet-name>
+		<url-pattern>/CreateMeeting</url-pattern>
 	</servlet-mapping>
 
 
 	<servlet>
-		<servlet-name>importjson</servlet-name>
-		<servlet-class>com.hsbc.meetopia.servlet.ImportUserJsonServlet</servlet-class>
+		<servlet-name>ImportUsers</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.ImportUsersServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>importjson</servlet-name>
-		<url-pattern>/importjson</url-pattern>
+		<servlet-name>ImportUsers</servlet-name>
+		<url-pattern>/ImportUsers</url-pattern>
 	</servlet-mapping>
 
 

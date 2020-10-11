@@ -4,29 +4,27 @@ import java.util.UUID;
 
 public class User {
 
-	enum Role {
-		ADMIN, MANAGER, MEMBER
-	}
-
 	private final String uID;
 	private String name;
 	private String email;
-	private String phone;
-	private Role role;
-	private int credits;
+	private long phone;
+	private String role;
+	private int credits = 0;
 
-	public User(String name, String email, String phone, Role role, int credits) {
+	public User(String name, String email, long phone, String role) {
 		super();
 		this.uID = generateUID();
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.role = role;
-		this.credits = credits;
+		this.role = role.toLowerCase();
+		if (role.toLowerCase() == "manager") {
+			this.credits = 2000;
+		}
 	}
 
 	public String generateUID() {
-		return UUID.randomUUID().toString();
+		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5).toUpperCase();
 	}
 
 	public String getName() {
@@ -45,19 +43,19 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
