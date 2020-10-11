@@ -27,10 +27,10 @@
 			<h1>Manager's Page</h1>
 		</div>
 	</div>
-				<%
-					Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
-					User user = (User) request.getAttribute("user");
-				%>
+	<%
+		Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
+	//User user = (User) request.getAttribute("user");
+	%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
@@ -40,9 +40,9 @@
 						<h3 class="card-title text-white">Manager Name</h3>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><strong>Email: </strong><%= user.getEmail()%></li>
+						<li class="list-group-item"><strong>Email: </strong>vikrantaheer@mail.com</li>
 						<li class="list-group-item"><strong>Last Logged In:
-						</strong> 12:00 PM</li>
+						</strong> 03:54 PM</li>
 					</ul>
 				</div>
 			</div>
@@ -85,7 +85,7 @@
 		</div>
 		<div class="row justify-content-center mt-1">
 			<div class="col-3">
-				<a href="./organise-meeting.html" class="btn btn-danger btn-lg">Organise
+				<a href="./organise-meeting.jsp" class="btn btn-danger btn-lg">Organise
 					Meeting</a>
 			</div>
 		</div>

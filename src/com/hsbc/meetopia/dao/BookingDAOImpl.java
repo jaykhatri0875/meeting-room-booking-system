@@ -28,6 +28,7 @@ public class BookingDAOImpl implements BookingDAO {
 				pStmt.setDate(3, booking.getDate());
 				pStmt.setTime(4, booking.getStartTime());
 				pStmt.setTime(5, booking.getEndTime());
+				pStmt.setString(6, booking.getBookedBy());
 
 				int recordsUpdated = pStmt.executeUpdate();
 				if (recordsUpdated > 0) {

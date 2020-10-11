@@ -1,7 +1,6 @@
 package com.hsbc.meetopia.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hsbc.meetopia.model.Meeting;
-import com.hsbc.meetopia.model.User;
-import com.hsbc.meetopia.service.BookingService;
-import com.hsbc.meetopia.service.BookingServiceImpl;
 import com.hsbc.meetopia.service.MeetingService;
 
 public class ListMeetingsServlet extends HttpServlet {
@@ -21,13 +17,13 @@ public class ListMeetingsServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		String userId = req.getParameter("userId"); //to be fetched from the session
+		String userId = req.getParameter("userId"); // to be fetched from the session
 		MeetingService meetingService = new MeetingService();
 		Collection<Meeting> meetings = meetingService.fetchMeetingsByUserId(userId);
-		User user = meetingService.fetchUserfromId(userId);
-		
+		// User user = meetingService.fetchUserfromId(userId);
+
 		req.setAttribute("meetings", meetings);
-		req.setAttribute("user", user);
+		// req.setAttribute("user", user);
 
 		RequestDispatcher rd = req.getRequestDispatcher("manager-page.jsp");
 		rd.forward(req, res);

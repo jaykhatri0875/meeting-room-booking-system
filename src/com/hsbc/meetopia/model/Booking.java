@@ -103,7 +103,7 @@ public class Booking {
 	}
 
 	public String generateUID() {
-		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5);
+		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5).toUpperCase();
 	}
 
 	@Override

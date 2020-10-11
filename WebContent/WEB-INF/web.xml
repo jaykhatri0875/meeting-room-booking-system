@@ -23,6 +23,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>createMeeting</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.OrganiseMeetingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createMeeting</servlet-name>
+		<url-pattern>/createMeeting</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
 		<servlet-name>importjson</servlet-name>
 		<servlet-class>com.hsbc.meetopia.servlet.ImportUserJsonServlet</servlet-class>
 	</servlet>
