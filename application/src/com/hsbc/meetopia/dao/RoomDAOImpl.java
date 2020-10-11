@@ -21,6 +21,9 @@ public class RoomDAOImpl implements RoomDAO {
 
 	private final static String SELECT_FROM_MEETINGROOM = "select * from meeting_room";
 	private final static String SELECT_FROM_AMENITIES = "select * from amenities";
+	
+	private final static String SELECT_MEETINGRROM_BY_ID = "select * from meeting_room where uid = ?";
+	private final static String SELECT_AMENITIES_BY_ID = "select * from amenities where uid = ?";
 
 	private final static String UPDATE_MEETINGROOM = "update meeting_room set capacity = ?, rating = ?, perhour_cost = ? where uid = ?";
 	private final static String UPDATE_AMENITIES = "update amenities set projector = ?, wifiConnection = ?, conferenceCallFacility = ?, whiteboard = ?, waterDispenser = ?, tv = ?, coffeeMachine = ? where uid = ?";
@@ -63,19 +66,28 @@ public class RoomDAOImpl implements RoomDAO {
 	public Collection<Room> fetchAllRooms() {
 		List<Room> meetingRooms = new ArrayList<>();
 		try {
-			Statement statement = connection.createStatement();
-
-			ResultSet rs = statement.executeQuery(SELECT_FROM_MEETINGROOM);
-			ResultSet rs1 = statement.executeQuery(SELECT_FROM_AMENITIES);
-
-			while (rs.next() && rs1.next()) {
-				Amenities amenities = new Amenities(rs1.getString("uid"), rs1.getInt("projector"),
+			PreparedStatement statement = connection.prepareStatement(SELECT_FROM_MEETINGROOM);
+			PreparedStatement statement2 = connection.prepareStatement(SELECT_FROM_AMENITIES);
+			
+			ResultSet rs1 = statement2.executeQuery();
+			
+			List<Amenities> amenities = new ArrayList<>();
+			
+			while(rs1.next()) {
+				amenities.add(new Amenities(rs1.getString("uid"), rs1.getInt("projector"),
 						rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"), rs1.getInt("whiteboard"),
-						rs1.getInt("waterDispenser"), rs1.getInt("tv"), rs1.getInt("coffeeMachine"));
-				meetingRooms.add(new Room(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
-						rs.getInt("perhour_cost"), amenities));
+						rs1.getInt("waterDispenser"), rs1.getInt("tv"), rs1.getInt("coffeeMachine")));
+				
 			}
-
+			int count = 0;
+			ResultSet rs = statement.executeQuery();
+			while (rs.next() && count < amenities.size()) {
+				meetingRooms.add(new Room(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
+						rs.getInt("perhour_cost"), amenities.get(count++)));
+			}
+			
+			rs.close();
+			rs1.close();
 			return meetingRooms;
 
 		} catch (Exception e) {
@@ -87,25 +99,29 @@ public class RoomDAOImpl implements RoomDAO {
 
 	@Override
 	public Room updateRoom(Room meetingRoom) {
-		PreparedStatement preparedStatement;
+		
 		try {
-			preparedStatement = connection.prepareStatement(UPDATE_MEETINGROOM);
+			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_MEETINGROOM);
 			preparedStatement.setInt(1, meetingRoom.getSeatingCapacity());
 			preparedStatement.setInt(2, meetingRoom.getRatings());
 			preparedStatement.setInt(3, meetingRoom.getCostPerHour());
+			preparedStatement.setString(4, meetingRoom.getuId());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 
-			preparedStatement = connection.prepareStatement(UPDATE_AMENITIES);
-			preparedStatement.setInt(1, meetingRoom.getAmenities().isProjector());
-			preparedStatement.setInt(2, meetingRoom.getAmenities().isWifiConnection());
-			preparedStatement.setInt(3, meetingRoom.getAmenities().isConferenceCallFacility());
-			preparedStatement.setInt(4, meetingRoom.getAmenities().isWhiteboard());
-			preparedStatement.setInt(5, meetingRoom.getAmenities().isWaterDispenser());
-			preparedStatement.setInt(6, meetingRoom.getAmenities().isTv());
-			preparedStatement.setInt(7, meetingRoom.getAmenities().isCoffeeMachine());
+			PreparedStatement preparedStatement1 =  connection.prepareStatement(UPDATE_AMENITIES);
+			preparedStatement1.setInt(1, meetingRoom.getAmenities().isProjector());
+			preparedStatement1.setInt(2, meetingRoom.getAmenities().isWifiConnection());
+			preparedStatement1.setInt(3, meetingRoom.getAmenities().isConferenceCallFacility());
+			preparedStatement1.setInt(4, meetingRoom.getAmenities().isWhiteboard());
+			preparedStatement1.setInt(5, meetingRoom.getAmenities().isWaterDispenser());
+			preparedStatement1.setInt(6, meetingRoom.getAmenities().isTv());
+			preparedStatement1.setInt(7, meetingRoom.getAmenities().isCoffeeMachine());
+			preparedStatement1.setString(8, meetingRoom.getuId());
 
-			int rowsUpdated1 = preparedStatement.executeUpdate();
+			int rowsUpdated1 = preparedStatement1.executeUpdate();
+			
+			System.out.println("In Dao : " + rowsUpdated + ", " + rowsUpdated1);
 
 			if (rowsUpdated > 0 && rowsUpdated1 > 0) {
 				return meetingRoom;
@@ -113,6 +129,46 @@ public class RoomDAOImpl implements RoomDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public Room fetchRoomById(String roomId) {
+		try {
+			PreparedStatement statement = connection.prepareStatement(SELECT_MEETINGRROM_BY_ID);
+			statement.setString(1, roomId);
+			
+			PreparedStatement statement2 = connection.prepareStatement(SELECT_AMENITIES_BY_ID);
+			statement2.setString(1, roomId);
+			
+			ResultSet rs1 = statement2.executeQuery();
+			
+			Amenities amenities = null;
+			Room meetingRoom = null;
+			
+			if(rs1.next()) {
+				amenities =new Amenities(rs1.getString("uid"), rs1.getInt("projector"),
+						rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"), rs1.getInt("whiteboard"),
+						rs1.getInt("waterDispenser"), rs1.getInt("tv"), rs1.getInt("coffeeMachine"));
+				
+			}
+			ResultSet rs = statement.executeQuery();
+			
+			
+			if(rs.next() ) {
+				meetingRoom = new Room(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
+						rs.getInt("perhour_cost"), amenities);
+			}
+			
+			rs.close();
+			rs1.close();
+			
+			return meetingRoom;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return null;
 	}
 
