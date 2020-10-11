@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.hsbc.meetopia.dao.MeetingDAO;
 import com.hsbc.meetopia.model.Meeting;
+import com.hsbc.meetopia.model.User;
 
 public class MeetingService {
 
@@ -31,6 +32,13 @@ public class MeetingService {
 			meetings.add(meeting);
 		}
 		return meetings;
+	}
+	
+	public User fetchUserfromId(String userId) {
+		
+		
+		return this.meetingDAO.fetchUserfromId(userId);
+		
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@page import="com.hsbc.meetopia.model.User"%>
 <%@page import="com.hsbc.meetopia.model.Meeting"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -26,7 +27,10 @@
 			<h1>Manager's Page</h1>
 		</div>
 	</div>
-
+				<%
+					Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
+					User user = (User) request.getAttribute("user");
+				%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
@@ -36,7 +40,7 @@
 						<h3 class="card-title text-white">Manager Name</h3>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><strong>Email: </strong>manageremail@company.com</li>
+						<li class="list-group-item"><strong>Email: </strong><%= user.getEmail()%></li>
 						<li class="list-group-item"><strong>Last Logged In:
 						</strong> 12:00 PM</li>
 					</ul>
@@ -44,9 +48,6 @@
 			</div>
 			<div class="col-sm-8">
 				<h3>Scheduled Meetings</h3>
-				<%
-					Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
-				%>
 				<table class="table">
 					<thead class="bg-danger">
 						<tr>

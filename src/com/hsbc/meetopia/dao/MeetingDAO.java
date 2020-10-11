@@ -23,7 +23,10 @@ public class MeetingDAO {
 	private static final String SELECT_MEETING_BY_MEETINGID = "select meeting.uid,meeting.title,booking_info.room_no,"
 			+ "booking_info.date,booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
 			+ "meeting.booking_info = booking_info.uid where meeting.uid=?";
-
+	private static final String SELECT_USER_BY_USERID = "SELECT * from Users where uid=?";
+	
+	
+	
 	public Meeting createMeeting(Meeting meeting) {
 		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
@@ -118,4 +121,19 @@ public class MeetingDAO {
 		return null;
 	}
 
+	public User fetchUserfromId(String userId) {
+		Connection connection = DatabaseUtils.getRemoteConnection();
+		if (connection != null) {
+			try {
+				PreparedStatement statement = connection.prepareStatement(SELECT_USER_BY_USERID);
+				statement.setString(1, userId);
+				ResultSet rs = statement.executeQuery();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+
+	}
 }

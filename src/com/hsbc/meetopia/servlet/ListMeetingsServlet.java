@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hsbc.meetopia.model.Meeting;
+import com.hsbc.meetopia.model.User;
+import com.hsbc.meetopia.service.BookingService;
+import com.hsbc.meetopia.service.BookingServiceImpl;
 import com.hsbc.meetopia.service.MeetingService;
 
 public class ListMeetingsServlet extends HttpServlet {
@@ -21,8 +24,10 @@ public class ListMeetingsServlet extends HttpServlet {
 		String userId = req.getParameter("userId");
 		MeetingService meetingService = new MeetingService();
 		Collection<Meeting> meetings = meetingService.fetchMeetingsByUserId(userId);
-
+		User user = meetingService.fetchUserfromId(userId);
+		
 		req.setAttribute("meetings", meetings);
+		req.setAttribute("user", user);
 
 		RequestDispatcher rd = req.getRequestDispatcher("manager-page.jsp");
 		rd.forward(req, res);
