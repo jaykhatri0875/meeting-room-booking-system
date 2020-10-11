@@ -14,7 +14,7 @@ import com.hsbc.meetopia.model.Booking;
 public class BookingServiceImpl implements BookingService {
 
 	private BookingDAO dao = BookingDAO.getBookingDAO();
-	
+
 	@Override
 	public Booking saveBooking(Booking booking) {
 		return this.dao.saveBooking(booking);

@@ -21,7 +21,7 @@ public class MeetingDAO {
 	private static final String INSERT_ATTENDEE = "insert into list_of_people (uid,userid) values(?,?)";
 	private static final String SELECT_MEETING_BY_USERID = "SELECT uid from list_of_people where user_uid = ?";
 	private static final String SELECT_MEETING_BY_MEETINGID = "select meeting.uid,meeting.title,booking_info.room_no,"
-			+ "booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
+			+ "booking_info.date,booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
 			+ "meeting.booking_info = booking_info.uid where meeting.uid=?";
 
 	public Meeting createMeeting(Meeting meeting) {

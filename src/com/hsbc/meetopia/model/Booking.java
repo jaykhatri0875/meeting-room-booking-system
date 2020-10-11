@@ -1,7 +1,7 @@
 package com.hsbc.meetopia.model;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
 import java.util.UUID;
 
 public class Booking {
@@ -27,6 +27,7 @@ public class Booking {
 		super();
 		this.uID = uID;
 		this.roomId = roomId;
+		this.bookingDate = bookingDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.bookedBy = bookedBy;
