@@ -1,2 +1,35 @@
-# meeting-room-booking-system
-automated meeting room booking system
+# Meetopia (Meeting Room Booking System):
+
+## Project Features
+
+1. Database is hosted at db4free.net for testing. However you can use your local MySQL database
+2. Allows easy management among admin, manager and member for performing room booking
+3. Servlets are connected to JSP files to act as a controller
+
+
+## Branch Rules
+
+1. `master`- Available for production
+2. `develop` - Still in development phase
+3. Rest all the 8 branches belong to individual contributors connected to `develop`
+
+
+## To Run the Project
+
+1. git clone REMOTE_URL "https://github.com/jaykhatri0875/meeting-room-booking-system"
+2. Open Eclipse/STS and select any workspace
+3. After the workspace is open, select `File` -> `New` -> `Dynamic Web Project`
+4. Uncheck default location and browse to the application folder inside the newly created cloned repo folder (in Step 1)
+5. Name the project -  "Meetopia" (To avoid any build issues)
+6. Hit `Next` two times to move to the next page
+7. Check on the `Create web.xml` and click on `Finish`
+8. Import apache tomcat api jar via the project build path
+9. Import sql connector jar file similarly (File is located at WebContent/WEB-INF/lib)
+10. Run the project
+
+
+## Troubleshoot Hints
+
+1. Clean and build the project
+2. Clean the server published resources
+3. Run the project via `Run As` -> `Run on Server`
