@@ -4,7 +4,7 @@ import com.hsbc.meetopia.model.User;
 
 public interface UserDAO {
 
-	static UserDAOImpl getUserDAO() {
+	static UserDAO getInstance() {
 		return new UserDAOImpl();
 	}
 

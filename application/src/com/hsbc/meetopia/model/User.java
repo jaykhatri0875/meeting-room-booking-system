@@ -23,6 +23,16 @@ public class User {
 		}
 	}
 
+	public User(String uID, String name, String email, long phone, String role, int credits) {
+		super();
+		this.uID = uID;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.role = role;
+		this.credits = credits;
+	}
+
 	public String generateUID() {
 		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5).toUpperCase();
 	}

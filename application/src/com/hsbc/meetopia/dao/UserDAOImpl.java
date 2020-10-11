@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.util.DatabaseUtils;
@@ -13,8 +12,8 @@ public class UserDAOImpl implements UserDAO {
 
 	Connection connection = DatabaseUtils.getRemoteConnection();
 
-	private static final String INSERT_QUERY = "insert into user(uid,name,email,phone,role,credits) values(?,?,?,?,?,?)";
-	private static final String SELECT_USER_BY_USERID = "SELECT * from user where uid=?";
+	private static final String INSERT_QUERY = "insert into users(uid,name,email,phone,role,credits) values(?,?,?,?,?,?)";
+	private static final String SELECT_USER_BY_USERID = "SELECT * from users where uid=?";
 
 	@Override
 	public User saveUser(User user) {
@@ -46,6 +45,11 @@ public class UserDAOImpl implements UserDAO {
 				PreparedStatement statement = connection.prepareStatement(SELECT_USER_BY_USERID);
 				statement.setString(1, uID);
 				ResultSet rs = statement.executeQuery();
+				while (rs.next()) {
+					User user = new User(rs.getString("uid"), rs.getString("name"), rs.getString("email"),
+							rs.getLong("phone"), rs.getString("role"), rs.getInt("credits"));
+					return user;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

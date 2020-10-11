@@ -14,12 +14,21 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>ListMeetings</servlet-name>
-		<servlet-class>com.hsbc.meetopia.servlet.ListMeetingsServlet</servlet-class>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ListMeetings</servlet-name>
-		<url-pattern>/ListMeetings</url-pattern>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagerPage</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.ManagerPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagerPage</servlet-name>
+		<url-pattern>/ManagerPage</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -36,7 +45,6 @@
 		<servlet-name>ImportUsers</servlet-name>
 		<servlet-class>com.hsbc.meetopia.servlet.ImportUsersServlet</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>ImportUsers</servlet-name>
 		<url-pattern>/ImportUsers</url-pattern>

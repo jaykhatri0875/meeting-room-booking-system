@@ -32,7 +32,7 @@
 		<div class="row justify-content-center">
 			<div class="card col-7">
 				<div class="card-body">
-					<form id="organise-meeting" method="POST" action="createMeeting">
+					<form id="organise-meeting" method="POST" action="CreateMeeting">
 						<div class="form-group">
 							<label for="meetingName">Meeting Name:</label> <input
 								name="meetingName" type="text" class="form-control"

@@ -18,6 +18,8 @@ import com.hsbc.meetopia.service.MeetingService;
 
 public class OrganiseMeetingServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userId = "UI18912"; // To be fetched from the session
@@ -49,6 +51,6 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		MeetingService meetingService = MeetingService.getInstance();
 		meetingService.saveMeeting(meeting);
 
-		response.sendRedirect("listMeetings?userId=" + userId);
+		response.sendRedirect("ManagerPage?userId=" + userId);
 	}
 }
