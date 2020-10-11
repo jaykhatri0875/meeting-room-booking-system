@@ -3,14 +3,13 @@ package com.hsbc.meetopia.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.hsbc.meetopia.model.*;
-import com.hsbc.meetopia.util.DatabaseConnection;
+import com.hsbc.meetopia.model.Amenities;
+import com.hsbc.meetopia.model.MeetingRoom;
 import com.hsbc.meetopia.util.DatabaseUtils;
 
 public class MeetinRoomDAOImpl implements MeetingRoomDAO {
@@ -70,11 +69,11 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 			ResultSet rs1 = statement.executeQuery(SELECT_FROM_AMENITIES);
 
 			while (rs.next() && rs1.next()) {
-				Amenities amenities = new Amenities(rs1.getString("uid"),rs1.getInt("projector"), rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"),
-						rs1.getInt("whiteboard"), rs1.getInt("waterDispenser"), rs1.getInt("tv"),
-						rs1.getInt("coffeeMachine"));
-				meetingRooms.add(new MeetingRoom(rs.getString("uid"), rs.getInt("capacity"),
-						rs.getInt("rating"), rs.getInt("perhour_cost"), amenities));
+				Amenities amenities = new Amenities(rs1.getString("uid"), rs1.getInt("projector"),
+						rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"), rs1.getInt("whiteboard"),
+						rs1.getInt("waterDispenser"), rs1.getInt("tv"), rs1.getInt("coffeeMachine"));
+				meetingRooms.add(new MeetingRoom(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
+						rs.getInt("perhour_cost"), amenities));
 			}
 
 			return meetingRooms;
