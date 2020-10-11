@@ -2,10 +2,11 @@
 
 ## Project Features
 
-1. Database is hosted at db4free.net for testing. However you can use your local MySQL database
-2. Queries for database schema initialization are contained in the `application` folder
+1. Database is hosted at `db4free.net` for testing. However you can use your local MySQL database
+2. Queries for database schema initialization are contained in the `application`
 3. Allows easy management among admin, manager and member for performing room booking
 4. Servlets are connected to JSP files to act as a controller
+5. All jar files are available in `application`
 
 
 ## Branch Rules
@@ -24,8 +25,8 @@
 5. Name the project -  "Meetopia" (To avoid any build issues)
 6. Hit `Next` two times to move to the next page
 7. Check on the `Create web.xml` and click on `Finish`
-8. Import apache tomcat api jar via the project build path
-9. Import sql connector jar file similarly (File is located at WebContent/WEB-INF/lib)
+8. Import `tomcat-api.jar`,`json-simple-1.1.1.jar` via project build path
+9. Import `mysql-connector-java-8.0.11.jar` similarly if connecting to RemoteDB
 10. Run the project
 
 
