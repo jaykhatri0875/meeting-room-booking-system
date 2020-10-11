@@ -16,8 +16,9 @@ import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.UserService;
 
 public class ImportUsersServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
+	private boolean flag = true;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +38,13 @@ public class ImportUsersServlet extends HttpServlet {
 
 				User user = new User(name, email, phone, role);
 				UserService userService = UserService.getInstance();
-				userService.saveUser(user);
+				User userCreated = userService.saveUser(user);
+				if (userCreated == null) {
+					flag = false;
+				}
+			}
+			if (flag) {
+				response.sendRedirect("login.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

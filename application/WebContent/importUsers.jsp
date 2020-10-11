@@ -23,7 +23,6 @@
 		<h2>Import Users from a JSON File</h2>
 		<p>To import a JSON file which has the users info:</p>
 		<form action="ImportUsers" method="POST">
-			<!--here the url of another file can be added, i just redirected it to index.jsp-->
 			<p>JSON file:</p>
 			<div class="custom-file mb-3">
 				<input type="file" class="custom-file-input" id="customFile"

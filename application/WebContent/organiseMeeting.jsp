@@ -133,7 +133,7 @@
 							name="selectedMembers">
 						<button type="submit" class="btn btn-primary ">Save &
 							Continue</button>
-						<a href="./manager-page.jsp" class="btn btn-danger ml-1">Cancel</a>
+						<a href="./managerPage.jsp" class="btn btn-danger ml-1">Cancel</a>
 					</form>
 
 					<!-- Add Members Modal -->

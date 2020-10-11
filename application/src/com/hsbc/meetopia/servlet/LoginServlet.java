@@ -40,11 +40,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("lastLoggedIn", dtf.format(now));
 
 			if (user.getRole().equals("admin")) {
-				response.sendRedirect("Admin_Page.jsp");
+				response.sendRedirect("AdminPage");
 			} else if (user.getRole().equals("manager")) {
 				response.sendRedirect("ManagerPage");
 			} else {
-				response.sendRedirect("member.jsp");
+				response.sendRedirect("MemberPage");
 			}
 		} else {
 			out.println("alert(\"" + "Incorrect User ID/Email" + "\")");

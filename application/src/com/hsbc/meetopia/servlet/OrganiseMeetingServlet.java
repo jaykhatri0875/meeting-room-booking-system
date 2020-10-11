@@ -10,9 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hsbc.meetopia.model.Booking;
 import com.hsbc.meetopia.model.Meeting;
+import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.BookingService;
 import com.hsbc.meetopia.service.MeetingService;
 
@@ -22,7 +24,10 @@ public class OrganiseMeetingServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = "UI18912"; // To be fetched from the session
+
+		HttpSession session = request.getSession(false);
+		User user = (User) session.getAttribute("user");
+		String bookedBy = user.getuID();
 
 		String title = request.getParameter("meetingName");
 		Date meetingDate = Date.valueOf(request.getParameter("meetingDate"));
@@ -40,8 +45,6 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
 		Time endTime = Time.valueOf(localDateFormat.format(addedTime));
 
-		String bookedBy = userId;
-
 		Booking booking = new Booking(roomId, meetingDate, startTime, endTime, bookedBy);
 		Meeting meeting = new Meeting(title, type, booking);
 
@@ -49,8 +52,10 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		bookingService.saveBooking(booking);
 
 		MeetingService meetingService = MeetingService.getInstance();
-		meetingService.saveMeeting(meeting);
+		Meeting meetingCreated = meetingService.saveMeeting(meeting);
 
-		response.sendRedirect("ManagerPage?userId=" + userId);
+		if (meetingCreated != null) {
+			response.sendRedirect("ManagerPage");
+		}
 	}
 }

@@ -30,7 +30,7 @@ public class MemberPageServlet extends HttpServlet {
 		req.setAttribute("meetings", meetings);
 		req.setAttribute("user", user);
 
-		RequestDispatcher rd = req.getRequestDispatcher("member.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("memberPage.jsp");
 		rd.forward(req, res);
 	}
 }

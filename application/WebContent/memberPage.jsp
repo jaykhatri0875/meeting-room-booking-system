@@ -1,4 +1,3 @@
-<%@page import="com.hsbc.meetopia.model.User"%>
 <%@page import="com.hsbc.meetopia.model.Meeting"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -8,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manager's Page</title>
+<title>Member Page</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -24,40 +23,21 @@
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1>Manager's Page</h1>
+			<h1>Member's Page</h1>
 		</div>
 	</div>
-	<%
-		Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
-	User user = (User) request.getAttribute("user");
-	%>
+
 	<div class="container">
+		<h3>Scheduled Meetings</h3>
 		<div class="row">
-			<div class="col-sm-4">
-				<h3>Profile</h3>
-				<div class="card">
-					<div class="card-body bg-danger">
-						<h3 class="card-title text-white">
-							<%
-								user.getName();
-							%>
-						</h3>
-					</div>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><strong>Email: </strong> <%
- 								user.getEmail();
- 						%></li>
-						<li class="list-group-item"><strong>Last Logged In:
-						</strong> 03:54 PM</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-sm-8">
-				<h3>Scheduled Meetings</h3>
+			<%
+				Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
+			%>
+			<div class="col-12">
 				<table class="table">
 					<thead class="bg-danger">
 						<tr>
-							<th class="text-white" scope="col">Meeting ID</th>
+							<th class="text-white" scope="col">#</th>
 							<th class="text-white" scope="col">Meeting Name</th>
 							<th class="text-white" scope="col">Meeting Room</th>
 							<th class="text-white" scope="col">Start Date</th>
@@ -85,14 +65,9 @@
 						<%
 							}
 						%>
+
 					</tbody>
 				</table>
-			</div>
-		</div>
-		<div class="row justify-content-center mt-1">
-			<div class="col-3">
-				<a href="./organise-meeting.jsp" class="btn btn-danger btn-lg">Organise
-					Meeting</a>
 			</div>
 		</div>
 	</div>
