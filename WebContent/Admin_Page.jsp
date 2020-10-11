@@ -57,9 +57,9 @@
                             <label for="meetingedit" style="font-family: Georgia, 'Times New Roman', Times, serif;">click on the meeting name to edit.</label>
                             </br>
                             <div class="list-group; card border-danger mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                                <a href="Edit_Room.html" class="list-group-item list-group-item-action" >First item</a>
-                                <a href="Edit_Room.html" class="list-group-item list-group-item-action">Second item</a>
-                                <a href="Edit_Room.html" class="list-group-item list-group-item-action">Third item</a>
+                                <a href="Edit_Room.jsp" class="list-group-item list-group-item-action" >First item</a>
+                                <a href="Edit_Room.jsp" class="list-group-item list-group-item-action">Second item</a>
+                                <a href="Edit_Room.jsp" class="list-group-item list-group-item-action">Third item</a>
                             </div> 
                         </div>
                     </div>

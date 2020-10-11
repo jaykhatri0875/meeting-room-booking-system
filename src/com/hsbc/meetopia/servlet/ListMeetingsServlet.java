@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,12 @@ public class ListMeetingsServlet extends HttpServlet {
 		MeetingService meetingService = new MeetingService();
 		Collection<Meeting> meetings = meetingService.fetchMeetingsByUserId(userId);
 
+		req.setAttribute("meetings", meetings);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("manager-page.jsp"); 
+		rd.forward(req, res);
+		
+		
 		PrintWriter pw = res.getWriter();
 		pw.write("<h1>List of meetings: </h1><br>");
 

@@ -1,3 +1,5 @@
+<%@page import="com.hsbc.meetopia.model.Meeting"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -25,6 +27,9 @@
     <div class="container">
         <h3>Scheduled Meetings</h3>
         <div class="row">
+        <%
+					Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
+				%>
             <div class="col-12">
                 <table class="table">
                     <thead class="bg-danger">
@@ -78,6 +83,27 @@
                         <td>@twitter</td>
                         <td>@twitter</td>
                       </tr>
+                      <%
+							for (Meeting meeting : meetings) {
+						%>
+						
+						<tr>
+							<td><%=meeting.getuID() %></td>
+							<td><%= meeting.getTitle() %></td>
+							<td><%= meeting.getBooking().getRoomId() %></td>
+							<td><%= meeting.getBooking().getDate()%></td>
+							<td><%= meeting.getBooking().getStartTime() %></td>
+							<td>
+							<%
+							long duration = meeting.getBooking().getEndTime().getTime() - meeting.getBooking().getStartTime().getTime();
+							%>
+							<%=(duration / (1000 * 60 * 60)) % 24 %>
+							</td>
+						</tr>
+						<%
+							}
+						%>
+                      
                     </tbody>
                   </table>
             </div>
