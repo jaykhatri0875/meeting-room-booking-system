@@ -1,4 +1,5 @@
-<%@page import="java.util.Collection;import com.hsbc.meetopia.model.*;"%>
+<%@page import="com.hsbc.meetopia.model.Meeting"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -41,15 +42,15 @@
 					</ul>
 				</div>
 			</div>
-			<%
-				Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
-			%>
 			<div class="col-sm-8">
 				<h3>Scheduled Meetings</h3>
+				<%
+					Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
+				%>
 				<table class="table">
 					<thead class="bg-danger">
 						<tr>
-							<th class="text-white" scope="col">#</th>
+							<th class="text-white" scope="col">Meeting ID</th>
 							<th class="text-white" scope="col">Meeting Name</th>
 							<th class="text-white" scope="col">Meeting Room</th>
 							<th class="text-white" scope="col">Start Date</th>
@@ -98,21 +99,24 @@
 							<td>@twitter</td>
 							<td>@twitter</td>
 						</tr>
+						
 						<%
 							for (Meeting meeting : meetings) {
 						%>
-						<tr>
-							<td><%=meeting.getuID()%></td>
-
-						</tr>
-						<tr>
-							<td><%=meeting.getTitle() %></td>
-						</tr>
-						<tr>
-							<td><%=meeting.getType() %></td>
-
-						</tr>
 						
+						<tr>
+							<td><%=meeting.getuID() %></td>
+							<td><%= meeting.getTitle() %></td>
+							<td><%= meeting.getBooking().getRoomId() %></td>
+							<td><%= meeting.getBooking().getDate()%></td>
+							<td><%= meeting.getBooking().getStartTime() %></td>
+							<td>
+							<%
+							long duration = meeting.getBooking().getEndTime().getTime() - meeting.getBooking().getStartTime().getTime();
+							%>
+							<%=(duration / (1000 * 60 * 60)) % 24 %>
+							</td>
+						</tr>
 						<%
 							}
 						%>
@@ -122,7 +126,7 @@
 		</div>
 		<div class="row justify-content-center mt-1">
 			<div class="col-3">
-				<a href="./organise-meeting.jsp" class="btn btn-danger btn-lg">Organise
+				<a href="./organise-meeting.html" class="btn btn-danger btn-lg">Organise
 					Meeting</a>
 			</div>
 		</div>
@@ -140,5 +144,14 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
+	<!-- LIST.JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"
+		integrity="sha512-AYlzeu/5Cexb6uN6uQ0LfoRx33CgMticI4+eEsmPz9QxxyuLr0zd4MA+4hxLqISNs8769A+FVnBCuaMne6d0+w=="
+		crossorigin="anonymous"></script>
+
+	<!-- SCRIPT.JS -->
+	<script src="script.js"></script>
 </body>
 </html>
