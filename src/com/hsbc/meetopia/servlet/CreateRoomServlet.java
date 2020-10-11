@@ -38,7 +38,7 @@ public class CreateRoomServlet extends HttpServlet {
 		if(value == 1) {
 			PrintWriter out = resp.getWriter();
 			out.println("alert(\"" + "Meeting Room created successfully :)" + "\")");
-			resp.sendRedirect("Create_Room.html");
+			resp.sendRedirect("Admin_Page.jsp");
 		}
 	}
 

@@ -9,7 +9,7 @@ import com.hsbc.meetopia.model.MeetingRoom;
 public class MeetingRoomServiceImpl implements MeetingRoomService{
 	
 	String meetingRoomName = "MR";
-	static int meetingRoomCount = 200;
+	static int meetingRoomCount = 300;
 	
 	MeetingRoomDAO dao = MeetingRoomDAO.getInstance();
 	
