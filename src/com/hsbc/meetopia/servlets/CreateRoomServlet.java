@@ -1,6 +1,8 @@
 package com.hsbc.meetopia.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,12 @@ public class CreateRoomServlet extends HttpServlet {
 		int coffeeMachine = req.getParameter("coffeeMachine") != null ? 1 :0;
 		
 		MeetingRoomService meetingRoomServiceImpl = MeetingRoomService.getInstance();
-		meetingRoomServiceImpl.createRoom(meetingName, capacity, ratings, cost, projector, wifi, tv, conCall, whiteboard, waterDispender, coffeeMachine);
+		int value = meetingRoomServiceImpl.createRoom(meetingName, capacity, ratings, cost, projector, wifi, tv, conCall, whiteboard, waterDispender, coffeeMachine);
+		if(value == 1) {
+			PrintWriter out = resp.getWriter();
+			out.println("alert(\"" + "Meeting Room created successfully :)" + "\")");
+			resp.sendRedirect("Create_Room.html");
+		}
 	}
 
 }

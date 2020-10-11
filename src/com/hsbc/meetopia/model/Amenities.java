@@ -44,6 +44,17 @@ public class Amenities {
 		this.coffeeMachine = coffeeMachine;
 	}
 
+	public Amenities(String meetingId, int projector, int wifiConnection, int conferenceCallFacility, int whiteboard, int waterDispenser, int tv, int coffeeMachine) {
+		this.uid = meetingId;
+		this.projector = projector;
+		this.wifiConnection = wifiConnection;
+		this.conferenceCallFacility = conferenceCallFacility;
+		this.whiteboard = whiteboard;
+		this.waterDispenser = waterDispenser;
+		this.tv = tv;
+		this.coffeeMachine = coffeeMachine;
+	}
+
 	public String getUid() {
 		return uid;
 	}
