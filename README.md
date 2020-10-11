@@ -1,4 +1,4 @@
-# Meetopia (Meeting Room Booking System):
+# Meetopia (Meeting Room Booking System)
 
 ## Project Features
 
@@ -9,20 +9,20 @@
 5. All jar files are available in `application`
 
 
-## Branch Rules
+## Branch Significance
 
 1. `master`- Available for production
 2. `develop` - Still in development phase
 3. Rest all the 8 branches belong to individual contributors connected to `develop`
 
 
-## To Run the Project
+## To Run The Project
 
-1. git clone REMOTE_URL "https://github.com/jaykhatri0875/meeting-room-booking-system"
+1. Open terminal. Run the following command: git clone https://github.com/jaykhatri0875/meeting-room-booking-system
 2. Open Eclipse/STS and select any workspace
 3. After the workspace is open, select `File` -> `New` -> `Dynamic Web Project`
 4. Uncheck default location and browse to `application` inside the newly created folder (in Step 1)
-5. Name the project -  "Meetopia" (To avoid any build issues)
+5. Name the project "Meetopia" (To avoid any build issues)
 6. Hit `Next` two times to move to the next page
 7. Check on the `Create web.xml` and click on `Finish`
 8. Import `tomcat-api.jar`,`json-simple-1.1.1.jar` via project build path
