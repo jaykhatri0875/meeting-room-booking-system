@@ -23,12 +23,30 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>AdminPage</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.AdminPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminPage</servlet-name>
+		<url-pattern>/AdminPage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>ManagerPage</servlet-name>
 		<servlet-class>com.hsbc.meetopia.servlet.ManagerPageServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ManagerPage</servlet-name>
 		<url-pattern>/ManagerPage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MemberPage</servlet-name>
+		<servlet-class>com.hsbc.meetopia.servlet.MemberPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberPage</servlet-name>
+		<url-pattern>/MemberPage</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
