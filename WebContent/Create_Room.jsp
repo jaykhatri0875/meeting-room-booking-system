@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -80,7 +80,7 @@
 
             <div class="form-group" >
                 <label for="capacity" class="font-weight-bold" style="font-family: Georgia, 'Times New Roman', Times, serif;">Seating capacity</label>
-                <input type="text" class="form-control card border-danger mb-3" style="width: 200px;" id="capacity" name="capacity" required>
+                <input type="text" class="form-control card border-danger mb-3" style="width: 200px;" id="capacity" name="capacity" placeholder="Enter capacity" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Field cannot be empty</div>
             </div>

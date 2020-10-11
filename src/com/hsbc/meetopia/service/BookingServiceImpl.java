@@ -7,7 +7,7 @@ package com.hsbc.meetopia.service;
 
 import java.util.Collection;
 
-import com.hsbc.meetopia.DAO.BookingDAO;
+import com.hsbc.meetopia.dao.BookingDAO;
 import com.hsbc.meetopia.exception.BookingNotFoundException;
 import com.hsbc.meetopia.model.Booking;
 
