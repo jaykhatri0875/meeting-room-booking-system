@@ -59,62 +59,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-							<td>@mdo</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-							<td>@fat</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-						</tr>
-						<tr>
-							<th scope="row">4</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-						</tr>
-						<tr>
-							<th scope="row">5</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-							<td>@twitter</td>
-						</tr>
-						
 						<%
 							for (Meeting meeting : meetings) {
 						%>
-						
+
 						<tr>
-							<td><%=meeting.getuID() %></td>
-							<td><%= meeting.getTitle() %></td>
-							<td><%= meeting.getBooking().getRoomId() %></td>
-							<td><%= meeting.getBooking().getDate()%></td>
-							<td><%= meeting.getBooking().getStartTime() %></td>
+							<td><%=meeting.getuID()%></td>
+							<td><%=meeting.getTitle()%></td>
+							<td><%=meeting.getBooking().getRoomId()%></td>
+							<td><%=meeting.getBooking().getDate()%></td>
+							<td><%=meeting.getBooking().getStartTime()%></td>
 							<td>
-							<%
-							long duration = meeting.getBooking().getEndTime().getTime() - meeting.getBooking().getStartTime().getTime();
-							%>
-							<%=(duration / (1000 * 60 * 60)) % 24 %>
+								<%
+									long duration = meeting.getBooking().getEndTime().getTime() - meeting.getBooking().getStartTime().getTime();
+								%> <%=(duration / (1000 * 60 * 60)) % 24 + " hrs"%>
 							</td>
 						</tr>
 						<%
