@@ -14,30 +14,30 @@ import com.hsbc.meetopia.util.DatabaseUtils;
 
 public class BookingDAOImpl implements BookingDAO {
 
-	private static final String INSERT_QUERY = "insert into booking_info(uid,room_no,date,start_time,end_time,booked_by)"
-			+ " values('?','?','?','?','?','?')";
+	private static final String INSERT_QUERY = "insert into booking_info(uid,room_no,date,start_time,end_time,booked_by) values(?,?,?,?,?,?)";
 	private static final String SELECT_QUERY = "select * from booking_info";
 	private static final String SELECT_BY_UID_QUERY = "select * from booking_info where uid=?;";
 
 	@Override
 	public Booking saveBooking(Booking booking) {
 		Connection connection = DatabaseUtils.getRemoteConnection();
-		int numberOfRecordsUpdated = 0;
-		try (PreparedStatement pStmt = connection.prepareStatement(INSERT_QUERY)) {
-			pStmt.setString(1, booking.getuID());
-			pStmt.setString(2, booking.getRoomId());
-			pStmt.setDate(3, new java.sql.Date(booking.getDate().getTime()));
-			pStmt.setTime(4, booking.getStartTime());
-			pStmt.setTime(5, booking.getEndTime());
-			pStmt.setString(2, booking.getRoomId());
+		if (connection != null) {
+			try (PreparedStatement pStmt = connection.prepareStatement(INSERT_QUERY)) {
+				pStmt.setString(1, booking.getuID());
+				pStmt.setString(2, booking.getRoomId());
+				pStmt.setDate(3, booking.getDate());
+				pStmt.setTime(4, booking.getStartTime());
+				pStmt.setTime(5, booking.getEndTime());
 
-			numberOfRecordsUpdated = pStmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+				int recordsUpdated = pStmt.executeUpdate();
+				if (recordsUpdated > 0) {
+					return booking;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		if (numberOfRecordsUpdated == 1) {
-			return booking;
-		}
+		System.out.println("Booking not inserted");
 		return null;
 	}
 

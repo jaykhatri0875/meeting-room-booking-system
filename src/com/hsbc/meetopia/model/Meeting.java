@@ -6,11 +6,11 @@ public class Meeting {
 
 	private final String uID;
 	private String title;
-	private MeetingType type;
+	private String type;
 	private User[] attendees;
 	private Booking booking;
 
-	public Meeting(String title, MeetingType type, User[] attendees, Booking booking) {
+	public Meeting(String title, String type, User[] attendees, Booking booking) {
 		super();
 		this.uID = generateUID();
 		this.title = title;
@@ -19,7 +19,15 @@ public class Meeting {
 		this.booking = booking;
 	}
 
-	public Meeting(String uID, String title, Booking booking) {
+	public Meeting(String title, String type, Booking booking) {
+		super();
+		this.uID = generateUID();
+		this.title = title;
+		this.type = type;
+		this.booking = booking;
+	}
+
+	public Meeting(String uID, String title, String type, Booking booking) {
 		super();
 		this.uID = uID;
 		this.title = title;
@@ -27,7 +35,7 @@ public class Meeting {
 	}
 
 	public String generateUID() {
-		return UUID.randomUUID().toString();
+		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5);
 	}
 
 	public String getTitle() {
@@ -38,11 +46,11 @@ public class Meeting {
 		this.title = title;
 	}
 
-	public MeetingType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(MeetingType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

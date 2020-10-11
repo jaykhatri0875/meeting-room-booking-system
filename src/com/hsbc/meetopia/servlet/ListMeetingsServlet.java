@@ -21,7 +21,7 @@ public class ListMeetingsServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		String userId = req.getParameter("userId");
+		String userId = req.getParameter("userId"); //to be fetched from the session
 		MeetingService meetingService = new MeetingService();
 		Collection<Meeting> meetings = meetingService.fetchMeetingsByUserId(userId);
 		User user = meetingService.fetchUserfromId(userId);
