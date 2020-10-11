@@ -33,7 +33,7 @@ public class DatabaseUtils {
 	 * 
 	 * @disclaimer Should not be edited
 	 */
-	private static final String DB_URL = "jdbc:mysql://db4free.net:3306/codefury";
+	private static final String DB_URL = "jdbc:mysql://db4free.net:3306/codefury?autoReconnect=true&useSSL=false";
 	private static final String USER = "codefury";
 	private static final String PASS = "codefury";
 

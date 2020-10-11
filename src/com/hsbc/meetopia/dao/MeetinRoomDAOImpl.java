@@ -11,13 +11,14 @@ import java.util.List;
 
 import com.hsbc.meetopia.model.*;
 import com.hsbc.meetopia.util.DatabaseConnection;
+import com.hsbc.meetopia.util.DatabaseUtils;
 
 public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 
-	Connection connection = DatabaseConnection.getConnection();
+	Connection connection = DatabaseUtils.getRemoteConnection();
 
-	private final static String INSERT_INTO_MEETINGROOM = "insert into meeting_room (uid, userId, capacity, rating, perhour_cost) values(?, ?, ?, ?, ?)";
-	private final static String INSERT_INTO_AMENITIES = "insert into amenities(uid, meetingId, projector, wifiConnection, conferenceCallFacility, whiteboard, waterDispenser, tv, coffeeMachine) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final static String INSERT_INTO_MEETINGROOM = "insert into meeting_room (uid, capacity, rating, perhour_cost) values(?, ?, ?, ?)";
+	private final static String INSERT_INTO_AMENITIES = "insert into amenities(uid, projector, wifiConnection, conferenceCallFacility, whiteboard, waterDispenser, tv, coffeeMachine) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	private final static String SELECT_FROM_MEETINGROOM = "select * from meeting_room";
 	private final static String SELECT_FROM_AMENITIES = "select * from amenities";
@@ -31,30 +32,28 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_MEETINGROOM);
 			preparedStatement.setString(1, meetingRoom.getuId());
-			preparedStatement.setString(2, meetingRoom.getUserId());
-			preparedStatement.setInt(3, meetingRoom.getSeatingCapacity());
-			preparedStatement.setInt(4, meetingRoom.getRatings());
-			preparedStatement.setInt(5, meetingRoom.getCostPerHour());
+			preparedStatement.setInt(2, meetingRoom.getSeatingCapacity());
+			preparedStatement.setInt(3, meetingRoom.getRatings());
+			preparedStatement.setInt(4, meetingRoom.getCostPerHour());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 
 			preparedStatement = connection.prepareStatement(INSERT_INTO_AMENITIES);
 			preparedStatement.setString(1, meetingRoom.getAmenities().getUid());
-			preparedStatement.setString(2, meetingRoom.getAmenities().getRoomId());
-			preparedStatement.setInt(3, meetingRoom.getAmenities().isProjector());
-			preparedStatement.setInt(4, meetingRoom.getAmenities().isWifiConnection());
-			preparedStatement.setInt(5, meetingRoom.getAmenities().isConferenceCallFacility());
-			preparedStatement.setInt(6, meetingRoom.getAmenities().isWhiteboard());
-			preparedStatement.setInt(7, meetingRoom.getAmenities().isWaterDispenser());
-			preparedStatement.setInt(8, meetingRoom.getAmenities().isTv());
-			preparedStatement.setInt(9, meetingRoom.getAmenities().isCoffeeMachine());
+			preparedStatement.setInt(2, meetingRoom.getAmenities().isProjector());
+			preparedStatement.setInt(3, meetingRoom.getAmenities().isWifiConnection());
+			preparedStatement.setInt(4, meetingRoom.getAmenities().isConferenceCallFacility());
+			preparedStatement.setInt(5, meetingRoom.getAmenities().isWhiteboard());
+			preparedStatement.setInt(6, meetingRoom.getAmenities().isWaterDispenser());
+			preparedStatement.setInt(7, meetingRoom.getAmenities().isTv());
+			preparedStatement.setInt(8, meetingRoom.getAmenities().isCoffeeMachine());
 
 			int rowsUpdated1 = preparedStatement.executeUpdate();
 
 			if (rowsUpdated > 0 && rowsUpdated1 > 0)
 				return meetingRoom;
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -71,11 +70,10 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 			ResultSet rs1 = statement.executeQuery(SELECT_FROM_AMENITIES);
 
 			while (rs.next() && rs1.next()) {
-				Amenities amenities = new Amenities(rs1.getString("uid"), rs1.getString("meetingId"),
-						rs1.getInt("projector"), rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"),
+				Amenities amenities = new Amenities(rs1.getString("uid"),rs1.getInt("projector"), rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"),
 						rs1.getInt("whiteboard"), rs1.getInt("waterDispenser"), rs1.getInt("tv"),
 						rs1.getInt("coffeeMachine"));
-				meetingRooms.add(new MeetingRoom(rs.getString("uid"), rs.getString("userId"), rs.getInt("capacity"),
+				meetingRooms.add(new MeetingRoom(rs.getString("uid"), rs.getInt("capacity"),
 						rs.getInt("rating"), rs.getInt("perhour_cost"), amenities));
 			}
 
@@ -113,7 +111,7 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 			if (rowsUpdated > 0 && rowsUpdated1 > 0) {
 				return meetingRoom;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
