@@ -2,11 +2,14 @@ package com.hsbc.meetopia.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.UserService;
@@ -29,10 +32,17 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			out.println("alert(\"" + "Logged In Successfully" + "\")");
 
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss A");
+			LocalDateTime now = LocalDateTime.now();
+			session.setAttribute("lastLoggedIn", dtf.format(now));
+
 			if (user.getRole().equals("admin")) {
 				response.sendRedirect("Admin_Page.jsp");
 			} else if (user.getRole().equals("manager")) {
-				response.sendRedirect("ManagerPage?userId=" + userId);
+				response.sendRedirect("ManagerPage");
 			} else {
 				response.sendRedirect("member.jsp");
 			}

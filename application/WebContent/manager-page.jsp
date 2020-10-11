@@ -29,7 +29,7 @@
 	</div>
 	<%
 		Collection<Meeting> meetings = (Collection) request.getAttribute("meetings");
-	//User user = (User) request.getAttribute("user");
+	User user = (User) request.getAttribute("user");
 	%>
 	<div class="container">
 		<div class="row">
@@ -37,10 +37,16 @@
 				<h3>Profile</h3>
 				<div class="card">
 					<div class="card-body bg-danger">
-						<h3 class="card-title text-white">Manager Name</h3>
+						<h3 class="card-title text-white">
+							<%
+								user.getName();
+							%>
+						</h3>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><strong>Email: </strong>vikrantaheer@mail.com</li>
+						<li class="list-group-item"><strong>Email: </strong> <%
+ 								user.getEmail();
+ 						%></li>
 						<li class="list-group-item"><strong>Last Logged In:
 						</strong> 03:54 PM</li>
 					</ul>
