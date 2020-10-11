@@ -1,23 +1,24 @@
 package com.hsbc.meetopia.model;
 
-public class MeetingRoom {
-	
+public class Room {
+
 	private String uId;
-	
+
 	private String userId;
-	
+
 	private String meetingName;
-	
+
 	private int seatingCapacity;
-	
+
 	private int ratings;
-	
+
 	private int costPerHour;
-	
+
 	private Amenities amenities;
-	
-	public MeetingRoom(String uId, String meetingName, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
-		
+
+	public Room(String uId, String meetingName, int seatingCapacity, int ratings, int costPerHour,
+			Amenities amenities) {
+
 		this.uId = uId;
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
@@ -25,18 +26,18 @@ public class MeetingRoom {
 		this.costPerHour = costPerHour;
 		this.amenities = amenities;
 	}
-	
-public MeetingRoom(String meetingName, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
-		
+
+	public Room(String meetingName, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
+
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
 		this.ratings = ratings;
 		this.costPerHour = costPerHour;
 		this.amenities = amenities;
 	}
-	
-public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour, Amenities amenities) {
-		
+
+	public Room(String meetingName, int seatingCapacity, int costPerHour, Amenities amenities) {
+
 		this.meetingName = meetingName;
 		this.seatingCapacity = seatingCapacity;
 		this.costPerHour = costPerHour;
@@ -46,39 +47,39 @@ public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour, Ame
 	public String getMeetingName() {
 		return meetingName;
 	}
-	
+
 	public void setMeetingName(String meetingName) {
 		this.meetingName = meetingName;
 	}
-	
+
 	public int getSeatingCapacity() {
 		return seatingCapacity;
 	}
-	
+
 	public void setSeatingCapacity(int seatingCapacity) {
 		this.seatingCapacity = seatingCapacity;
 	}
-	
+
 	public int getRatings() {
 		return ratings;
 	}
-	
+
 	public void setRatings(int ratings) {
 		this.ratings = ratings;
 	}
-	
+
 	public int getCostPerHour() {
 		return costPerHour;
 	}
-	
+
 	public void setCostPerHour(int costPerHour) {
 		this.costPerHour = costPerHour;
 	}
-	
+
 	public Amenities getAmenities() {
 		return amenities;
 	}
-	
+
 	public void setAmenities(Amenities amenities) {
 		this.amenities = amenities;
 	}
@@ -122,7 +123,7 @@ public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour, Ame
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MeetingRoom other = (MeetingRoom) obj;
+		Room other = (Room) obj;
 		if (Double.doubleToLongBits(costPerHour) != Double.doubleToLongBits(other.costPerHour))
 			return false;
 		if (meetingName == null) {
@@ -136,9 +137,5 @@ public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour, Ame
 			return false;
 		return true;
 	}
-	
-	
 
-	
-	
 }

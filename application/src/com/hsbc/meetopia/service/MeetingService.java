@@ -1,44 +1,19 @@
 package com.hsbc.meetopia.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-import com.hsbc.meetopia.dao.MeetingDAO;
 import com.hsbc.meetopia.model.Meeting;
-import com.hsbc.meetopia.model.User;
 
-public class MeetingService {
+public interface MeetingService {
 
-	private MeetingDAO meetingDAO = new MeetingDAO();
-
-	public Meeting saveMeeting(Meeting Meeting) {
-		return this.meetingDAO.createMeeting(Meeting);
+	static MeetingService getInstance() {
+		return new MeetingServiceImpl();
 	}
 
-	public Collection<Meeting> fetchMeetings() {
-		return this.meetingDAO.fetchMeetings();
-	}
+	Meeting saveMeeting(Meeting Meeting);
 
-	public Meeting fetchMeetingByMeetingId(String meetingId) {
-		return meetingDAO.fetchMeetingByMeetingId(meetingId);
-	}
+	Meeting fetchMeetingByMeetingId(String meetingId);
 
-	public Collection<Meeting> fetchMeetingsByUserId(String userId) {
-		List<Meeting> meetings = new ArrayList<>();
-		Collection<String> meetingIds = this.meetingDAO.fetchMeetingsByUserId(userId);
-		for (String meetingId : meetingIds) {
-			Meeting meeting = fetchMeetingByMeetingId(meetingId);
-			meetings.add(meeting);
-		}
-		return meetings;
-	}
-	
-	public User fetchUserfromId(String userId) {
-		
-		
-		return this.meetingDAO.fetchUserfromId(userId);
-		
-	}
+	Collection<Meeting> fetchMeetingsByUserId(String userId);
 
 }

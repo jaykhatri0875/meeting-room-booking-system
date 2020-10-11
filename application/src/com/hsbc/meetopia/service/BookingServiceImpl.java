@@ -1,8 +1,3 @@
-/**
- * @author ClanOctate
- * @purpose Service layer implementation for booking information
- */
-
 package com.hsbc.meetopia.service;
 
 import java.util.Collection;
@@ -13,7 +8,7 @@ import com.hsbc.meetopia.model.Booking;
 
 public class BookingServiceImpl implements BookingService {
 
-	private BookingDAO dao = BookingDAO.getBookingDAO();
+	private BookingDAO dao = BookingDAO.getInstance();
 
 	@Override
 	public Booking saveBooking(Booking booking) {

@@ -14,6 +14,4 @@ public interface UserService {
 
 	User fetchUserByUID(String uID);
 
-	Collection<User> fetchUsers();
-
 }

@@ -12,7 +12,7 @@ import com.hsbc.meetopia.model.Booking;
 
 public interface BookingService {
 
-	static BookingService getBookingService() {
+	static BookingService getInstance() {
 		return new BookingServiceImpl();
 	}
 

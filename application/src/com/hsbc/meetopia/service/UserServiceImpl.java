@@ -19,9 +19,4 @@ public class UserServiceImpl implements UserService {
 		return this.dao.fetchUserByUID(uID);
 	}
 
-	@Override
-	public Collection<User> fetchUsers() {
-		return this.dao.fetchUsers();
-	}
-
 }

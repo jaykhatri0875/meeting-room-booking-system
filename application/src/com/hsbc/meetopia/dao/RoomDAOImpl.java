@@ -9,10 +9,10 @@ import java.util.Collection;
 import java.util.List;
 
 import com.hsbc.meetopia.model.Amenities;
-import com.hsbc.meetopia.model.MeetingRoom;
+import com.hsbc.meetopia.model.Room;
 import com.hsbc.meetopia.util.DatabaseUtils;
 
-public class MeetinRoomDAOImpl implements MeetingRoomDAO {
+public class RoomDAOImpl implements RoomDAO {
 
 	Connection connection = DatabaseUtils.getRemoteConnection();
 
@@ -26,7 +26,7 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 	private final static String UPDATE_AMENITIES = "update amenities set projector = ?, wifiConnection = ?, conferenceCallFacility = ?, whiteboard = ?, waterDispenser = ?, tv = ?, coffeeMachine = ? where uid = ?";
 
 	@Override
-	public MeetingRoom createRoom(MeetingRoom meetingRoom) {
+	public Room createRoom(Room meetingRoom) {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_MEETINGROOM);
@@ -60,8 +60,8 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 	}
 
 	@Override
-	public Collection<MeetingRoom> fetchAllRooms() {
-		List<MeetingRoom> meetingRooms = new ArrayList<>();
+	public Collection<Room> fetchAllRooms() {
+		List<Room> meetingRooms = new ArrayList<>();
 		try {
 			Statement statement = connection.createStatement();
 
@@ -72,7 +72,7 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 				Amenities amenities = new Amenities(rs1.getString("uid"), rs1.getInt("projector"),
 						rs1.getInt("wifiConnection"), rs1.getInt("conferenceCallFacility"), rs1.getInt("whiteboard"),
 						rs1.getInt("waterDispenser"), rs1.getInt("tv"), rs1.getInt("coffeeMachine"));
-				meetingRooms.add(new MeetingRoom(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
+				meetingRooms.add(new Room(rs.getString("uid"), rs.getInt("capacity"), rs.getInt("rating"),
 						rs.getInt("perhour_cost"), amenities));
 			}
 
@@ -86,7 +86,7 @@ public class MeetinRoomDAOImpl implements MeetingRoomDAO {
 	}
 
 	@Override
-	public MeetingRoom updateRoom(MeetingRoom meetingRoom) {
+	public Room updateRoom(Room meetingRoom) {
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = connection.prepareStatement(UPDATE_MEETINGROOM);

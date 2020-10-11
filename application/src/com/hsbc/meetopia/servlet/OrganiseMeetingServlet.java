@@ -43,10 +43,10 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		Booking booking = new Booking(roomId, meetingDate, startTime, endTime, bookedBy);
 		Meeting meeting = new Meeting(title, type, booking);
 
-		BookingService bookingService = BookingService.getBookingService();
+		BookingService bookingService = BookingService.getInstance();
 		bookingService.saveBooking(booking);
 
-		MeetingService meetingService = new MeetingService();
+		MeetingService meetingService = MeetingService.getInstance();
 		meetingService.saveMeeting(meeting);
 
 		response.sendRedirect("listMeetings?userId=" + userId);

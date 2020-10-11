@@ -7,7 +7,7 @@ import com.hsbc.meetopia.model.Booking;
 
 public interface BookingDAO {
 
-	static BookingDAOImpl getBookingDAO() {
+	static BookingDAOImpl getInstance() {
 		return new BookingDAOImpl();
 	}
 

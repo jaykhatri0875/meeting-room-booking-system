@@ -2,16 +2,16 @@ package com.hsbc.meetopia.service;
 
 import java.util.Collection;
 
-import com.hsbc.meetopia.dao.MeetingRoomDAO;
+import com.hsbc.meetopia.dao.RoomDAO;
 import com.hsbc.meetopia.model.Amenities;
-import com.hsbc.meetopia.model.MeetingRoom;
+import com.hsbc.meetopia.model.Room;
 
-public class MeetingRoomServiceImpl implements MeetingRoomService{
+public class RoomServiceImpl implements RoomService{
 	
 	String meetingRoomName = "MR";
 	static int meetingRoomCount = 300;
 	
-	MeetingRoomDAO dao = MeetingRoomDAO.getInstance();
+	RoomDAO dao = RoomDAO.getInstance();
 	
 	@Override
 	public int createRoom(String meetingName, int capacity, int ratings, int cost, int projector, int wifi, int tv, int conCall, int whiteboard, int waterDispenser, int coffeeMachine) {
@@ -20,7 +20,7 @@ public class MeetingRoomServiceImpl implements MeetingRoomService{
 		String meetingId = meetingRoomName + Integer.toString(++ meetingRoomCount);
 		System.out.println(meetingId);
 		
-		MeetingRoom meetingRoom = new MeetingRoom(meetingId, meetingName, capacity, ratings, cost, new Amenities(meetingId, projector, wifi, conCall, whiteboard, waterDispenser, tv, coffeeMachine)); 
+		Room meetingRoom = new Room(meetingId, meetingName, capacity, ratings, cost, new Amenities(meetingId, projector, wifi, conCall, whiteboard, waterDispenser, tv, coffeeMachine)); 
 		if(this.dao.createRoom(meetingRoom)!=null)
 			return 1;
 		return 0;
@@ -28,12 +28,12 @@ public class MeetingRoomServiceImpl implements MeetingRoomService{
 	}
 
 	@Override
-	public Collection<MeetingRoom> fetchAllRooms() {
+	public Collection<Room> fetchAllRooms() {
 		return null;
 	}
 
 	@Override
-	public MeetingRoom updateRoom(MeetingRoom meetingRoom) {
+	public Room updateRoom(Room meetingRoom) {
 		return null;
 	}
 

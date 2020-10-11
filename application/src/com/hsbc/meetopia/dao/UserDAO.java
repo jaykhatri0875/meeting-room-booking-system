@@ -1,7 +1,5 @@
 package com.hsbc.meetopia.dao;
 
-import java.util.Collection;
-
 import com.hsbc.meetopia.model.User;
 
 public interface UserDAO {
@@ -13,7 +11,5 @@ public interface UserDAO {
 	User saveUser(User user);
 
 	User fetchUserByUID(String uID);
-
-	Collection<User> fetchUsers();
 
 }
