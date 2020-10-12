@@ -5,6 +5,7 @@ package com.hsbc.meetopia.service;
 	it calls dao layer after doing validations 
 */
 import java.util.Collection;
+import java.util.UUID;
 
 import com.hsbc.meetopia.dao.RoomDAO;
 import com.hsbc.meetopia.exception.ConnectionFailedException;
@@ -22,7 +23,7 @@ public class RoomServiceImpl implements RoomService {
 	public int createRoom(String meetingName, int capacity, int ratings, int cost, int projector, int wifi, int tv,
 			int conCall, int whiteboard, int waterDispenser, int coffeeMachine) {
 
-		String meetingId = meetingRoomName + Integer.toString(++meetingRoomCount);
+		String meetingId = meetingRoomName + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5).toUpperCase();
 		System.out.println(meetingId);
 
 		Room meetingRoom = new Room(meetingId, capacity, ratings, cost,
