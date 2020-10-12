@@ -1,5 +1,10 @@
 package com.hsbc.meetopia.dao;
-
+/*	
+	DAO layer for Users
+	- it implements userDAO interface , which has below functions
+		-saveUser :- saves user into database
+		-fetchUserByUID :- fetches user from database by using userID
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
