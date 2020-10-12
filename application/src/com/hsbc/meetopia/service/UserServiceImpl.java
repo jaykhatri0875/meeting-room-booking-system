@@ -39,6 +39,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User fetchUserByName(String name) {
+		User user1 = null;
+		try {
+			user1 = this.dao.fetchUserByName(name);
+		} catch (ConnectionFailedException e) {
+			System.out.println(e.getMessage());
+		}
+		return user1;
+	}
+
+	@Override
 	public User loginUser(String uID, String email) {
 		User user = fetchUserByUID(uID);
 		if (user != null && validateEmailAddress(email)) {

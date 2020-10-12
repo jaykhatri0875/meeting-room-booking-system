@@ -24,7 +24,8 @@ public class UserDAOImpl implements UserDAO {
 
 	private static final String INSERT_QUERY = "insert into users(uid,name,email,phone,role,credits) values(?,?,?,?,?,?)";
 	private static final String SELECT_USER_BY_USERID = "SELECT * from users where uid=?";
-	private static final String SELECT_FROM_USERS = "SELECT * from users";
+	private static final String SELECT_USER_BY_NAME = "SELECT * from users where name=?";
+	private static final String SELECT_MEMBERS = "SELECT * from users where role=?";
 
 	@Override
 	public User saveUser(User user) throws ConnectionFailedException {
@@ -68,11 +69,31 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public User fetchUserByName(String name) throws ConnectionFailedException {
+		if (connection != null) {
+			try {
+				PreparedStatement statement = connection.prepareStatement(SELECT_USER_BY_NAME);
+				statement.setString(1, name);
+				ResultSet rs = statement.executeQuery();
+				while (rs.next()) {
+					User user = new User(rs.getString("uid"), rs.getString("name"), rs.getString("email"),
+							rs.getLong("phone"), rs.getString("role"), rs.getInt("credits"));
+					return user;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		throw new ConnectionFailedException("While fetching user by name");
+	}
+
+	@Override
 	public Collection<User> fetchUsers() throws ConnectionFailedException {
 		if (connection != null) {
 			List<User> users = new ArrayList<>();
 			try {
-				PreparedStatement statement = connection.prepareStatement(SELECT_FROM_USERS);
+				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERS);
+				statement.setString(1, "member");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					users.add(new User(rs.getString("uid"), rs.getString("name")));

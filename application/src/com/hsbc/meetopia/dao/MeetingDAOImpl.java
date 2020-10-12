@@ -22,9 +22,6 @@ public class MeetingDAOImpl implements MeetingDAO {
 
 	Connection connection = DatabaseUtils.getRemoteConnection();
 
-	private static final String SELECT_FROM_MEETING = "select meeting.uid,meeting.title,booking_info.room_no,booking_info.dateOfBooking,"
-			+ "booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
-			+ "meeting.booking_info = booking_info.uid";
 	private static final String INSERT_MEETING = "insert into meeting (uid,title,booking_info,typeOfMeeting) values (?,?,?,?)";
 	// private static final String INSERT_ATTENDEE = "insert into list_of_people
 	// (uid,userid) values(?,?)";
@@ -43,16 +40,17 @@ public class MeetingDAOImpl implements MeetingDAO {
 				statement.setString(3, meeting.getBooking().getuID());
 				statement.setString(4, meeting.getType().toString());
 
+				int recordsUpdated = statement.executeUpdate();
+
 				/*
 				 * PreparedStatement preparedStatement =
-				 * connection.prepareStatement(INSERT_ATTENDEE); for (User attendee :
-				 * meeting.getAttendees()) { preparedStatement.setString(1, meeting.getuID());
-				 * preparedStatement.setString(2, attendee.getuID());
-				 * preparedStatement.addBatch(); }
+				 * connection.prepareStatement(INSERT_ATTENDEE); User[] attendees =
+				 * meeting.getAttendees(); for (int i = 0; i < attendees.length; i++) {
+				 * preparedStatement.setString(1, meeting.getuID());
+				 * preparedStatement.setString(2, attendees[i].getuID());
+				 * preparedStatement.addBatch(); } int[] rowsUpdated =
+				 * preparedStatement.executeBatch();
 				 */
-
-				int recordsUpdated = statement.executeUpdate();
-				// int[] rowsUpdated = preparedStatement.executeBatch();
 				if (recordsUpdated > 0) {
 					// connection.commit();
 					return meeting;

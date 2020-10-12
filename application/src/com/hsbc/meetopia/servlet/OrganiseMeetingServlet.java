@@ -48,6 +48,14 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		String roomId = request.getParameter("meetingRoom");
 		String type = request.getParameter("meetingType");
 
+		UserService userService = UserService.getInstance();
+		User[] attendees = new User[1];
+		String[] memberIds = request.getParameter("addMember").split(",");
+		for (int i = 0; i < memberIds.length; i++) {
+			User member = userService.fetchUserByUID(memberIds[i]);
+			attendees[i] = member;
+		}
+
 		Date addedTime = new Date(startTime.getTime() + (durationHrs * 60 * 60 * 1000) + (durationMin * 60 * 1000));
 		SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
 		Time endTime = Time.valueOf(localDateFormat.format(addedTime));
@@ -62,6 +70,7 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		Meeting meetingCreated = meetingService.saveMeeting(meeting);
 
 		if (meetingCreated != null) {
+			System.out.println("Meeting successfully created");
 			response.sendRedirect("ManagerPage");
 		}
 	}

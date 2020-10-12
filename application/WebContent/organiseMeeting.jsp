@@ -44,7 +44,7 @@
 		<div class="row justify-content-center">
 			<div class="card col-7">
 				<div class="card-body">
-					<form id="organise-meeting" method="POST" action="createMeeting">
+					<form id="organise-meeting" method="POST" action="CreateMeeting">
 						<div class="form-group">
 							<label for="meetingName">Meeting Name:</label> <input
 								name="meetingName" type="text" class="form-control"
@@ -76,25 +76,14 @@
 							</div>
 						</div>
 						<div class="form-group">
-								<label for="addMember">Meeting Name:</label>
-								<input name="addMember" type="text" class="form-control"
-								id="addMember" placeholder="Enter member details" required>
+							<label for="addMember">Member ID:</label> <input name="addMember"
+								type="text" class="form-control" id="addMember"
+								placeholder="Enter Member ID" required>
 						</div>
 						<div class="form-group">
 							<label for="meetingRoom">Meeting Room:</label> <input
-								list="meetingRoom" type="text" class="form-control"
-								placeholder="Enter Meeting Room ID" required>
-							<%--add data from database here from database --%>
-							<datalist id="meetingRoom">
-								<%
-									for (String roomId : rooms) {
-								%>
-								<option value=<%=roomId%>>
-									<%
-										}
-									%>
-								
-							</datalist>
+								name="meetingRoom" type="text" class="form-control"
+								id="meetingRoom" placeholder="Enter Meeting Room ID" required>
 						</div>
 						<div class="form-group">
 							<div class="row">
@@ -146,10 +135,10 @@
 							Continue</button>
 						<a href="./managerPage.jsp" class="btn btn-danger ml-1">Cancel</a>
 					</form>
-					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<!-- Bootstrap JS -->

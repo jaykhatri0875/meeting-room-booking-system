@@ -15,5 +15,7 @@ public interface UserDAO {
 
 	User fetchUserByUID(String uID) throws ConnectionFailedException;
 
+	User fetchUserByName(String name) throws ConnectionFailedException;
+
 	Collection<User> fetchUsers() throws ConnectionFailedException;
 }

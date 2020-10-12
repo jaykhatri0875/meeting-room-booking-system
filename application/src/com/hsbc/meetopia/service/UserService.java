@@ -14,6 +14,8 @@ public interface UserService {
 
 	User fetchUserByUID(String uID);
 
+	User fetchUserByName(String name);
+
 	User loginUser(String uID, String email);
 
 	Collection<User> fetchUsers();
