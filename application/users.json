@@ -1,38 +1,41 @@
-[
-  {
-    "name": "Anuj Chetwani",
-    "email": 22,
-    "phone": 9938628222,
-    "role": "admin"
-  },
-  {
-    "name": "Bhavesh Ittadwar",
-    "email": 22,
-    "phone": 7511839943,
-    "role": "manager"
-  },
-  {
-    "name": "Yash Zambre",
-    "email": 22,
-    "phone": 8687407529,
-    "role": "manager"
-  },
-  {
-    "name": "Sambhav Khajanchi",
-    "email": 22,
-    "phone": 6210317940,
-    "role": "member"
-  },
-  {
-    "name": "Kunal Kodam",
-    "email": 22,
-    "phone": 7098725798,
-    "role": "member"
-  },
-  {
-    "name": "Shardul Deolankar",
-    "email": 22,
-    "phone": 8517840482,
-    "role": "member"
-  }
-]
+{
+	"users":
+	[
+	  {
+	    "name": "Anuj Chetwani",
+	    "email": "22",
+	    "phone": 9938628222,
+	    "role": "admin"
+	  },
+	  {
+	    "name": "Bhavesh Ittadwar",
+	    "email": "22",
+	    "phone": 7511839943,
+	    "role": "manager"
+	  },
+	  {
+	    "name": "Yash Zambre",
+	    "email": "22",
+	    "phone": 8687407529,
+	    "role": "manager"
+	  },
+	  {
+	    "name": "Sambhav Khajanchi",
+	    "email": "22",
+	    "phone": 6210317940,
+	    "role": "member"
+	  },
+	  {
+	    "name": "Kunal Kodam",
+	    "email": "22",
+	    "phone": 7098725798,
+	    "role": "member"
+	  },
+	  {
+	    "name": "Shardul Deolankar",
+	    "email": "22",
+	    "phone": 8517840482,
+	    "role": "member"
+	  }
+	]
+}

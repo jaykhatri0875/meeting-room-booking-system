@@ -43,7 +43,7 @@ public class ImportUsersServlet extends HttpServlet {
 					flag = false;
 				}
 			}
-			if (flag) {
+			if (flag == true) {
 				response.sendRedirect("login.jsp");
 			}
 		} catch (Exception e) {
