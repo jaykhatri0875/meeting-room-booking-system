@@ -1,5 +1,13 @@
 package com.hsbc.meetopia.dao;
 
+/*
+	this is DAO layer for meeting rooms
+	if implements following methods from roomDAO interface:
+		- createRoom :- it inserts room into database table and returns the room object
+		- fetchAllrooms :- it fetches all rooms globally from database
+		- fetchroomByID: fetches room based on unique meeting room ID 
+		- updateRoom :-  updates any changes in room details / amenities and stores in database
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
