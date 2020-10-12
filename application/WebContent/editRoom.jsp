@@ -33,7 +33,6 @@
 			alert('Enter seating capacity');
 		}
 	}
-
 	function cancelFunction() {
 		var txt;
 		var r = confirm("Are you sure you want to cancel ?");
@@ -41,29 +40,23 @@
 			txt = "OK!";
 			//var valueName = document.getElementById('userName').value;
 			var valueCapacity = document.getElementById('capacity').value;
-
 			/* if(valueName != "")
 			    document.getElementById("userName").value = ""; */
-
 			if (valueCapacity != "")
 				document.getElementById("capacity").value = "";
-
 		} else {
 			txt = "Cancel";
 		}
 		document.getElementById("cancel").innerHTML = txt;
 	}
-
 	function openNav() {
 		document.getElementById("mySidebar").style.width = "150px";
 
 	}
-
 	function closeNav() {
 		document.getElementById("mySidebar").style.width = "0";
 		document.getElementById("main").style.marginLeft = "0";
 	}
-
 	function goBack() {
 		window.history.back();
 	}
@@ -150,13 +143,14 @@ body {
 	RoomService meetingRoomService = RoomService.getInstance();
 
 	String roomid = request.getParameter("room_id");
+	System.out.println("RoomId : " + roomid);
 	Room meetingRoom = meetingRoomService.fetchRoomById(roomid);
 	%>
 
 	<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 		<a href="adminPage.jsp">ADMIN PAGE</a> <a href="createRoom.jsp">CREATE
-			ROOM</a> <a href="Logout">LOGOUT</a>
+			ROOM</a> <a href="index.jsp">LOGOUT</a>
 	</div>
 
 	<!--Starting of navigational bar-->

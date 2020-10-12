@@ -1,5 +1,5 @@
 <%@page import="java.util.*"%>
-<%@page import="com.hsbc.meetopia.model.*"%>
+<%@page import="com.hsbc.meetopia.model.Room"%>
 <%@page import="com.hsbc.meetopia.service.RoomService"%>
 <%@page import="com.hsbc.meetopia.util.DatabaseUtils"%>
 <%@page import="java.sql.Connection"%>
@@ -29,7 +29,6 @@
 		document.getElementById("mySidebar").style.width = "150px";
 		//document.getElementById("main").style.marginLeft = "150px";
 	}
-
 	function closeNav() {
 		document.getElementById("mySidebar").style.width = "0";
 		document.getElementById("main").style.marginLeft = "0";
@@ -112,15 +111,12 @@ td, th {
 
 </head>
 <body>
-	<%--
+	<%
 		Connection con = DatabaseUtils.getRemoteConnection();
-	RoomService roomService = RoomService.getInstance();
-	Collection<Room> list = roomService.fetchAllRooms();
+	RoomService meetingRoomService = RoomService.getInstance();
+	Collection<Room> list = meetingRoomService.fetchAllRooms();
 	List<Room> meetingRooms = new ArrayList<>();
-	meetingRooms.addAll(list);--%>
-	<% 
-	User user = (User) request.getAttribute("user");
-	Collection<Room> rooms = (Collection)request.getAttribute("rooms");
+	meetingRooms.addAll(list);
 	%>
 
 
@@ -128,7 +124,7 @@ td, th {
 
 	<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		<a href="createRoom.jsp">CREATE ROOM</a> <a href="Logout">LOGOUT</a>
+		<a href="Create_Room.jsp">CREATE ROOM</a> <a href="#">LOGOUT</a>
 	</div>
 
 
@@ -146,8 +142,8 @@ td, th {
 		<div class="card card border-danger mb-3"
 			style="margin-left: 850px; margin-right: 50px; margin-top: 15px; height: 130px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px;">
 			<div class="card-body">
-				<p class="card-text">Name : <%= user.getName() %></p>
-				<p class="card-text">Email ID : <%=user.getEmail() %></p>
+				<p class="card-text">Name</p>
+				<p class="card-text">Email ID</p>
 				<p class="card-text">last logged in</p>
 
 			</div>
@@ -194,31 +190,30 @@ td, th {
 
 							<%
 								try {
-
-								for (Room meetingRoom : rooms) {
+								int count = 1;
+								for (Room meetingRoom : meetingRooms) {
 
 									out.print("<tr>");
 
 									out.print("<td>");
 									out.print(meetingRoom.getuId());
 									out.print("</td>");
-
+									//System.out.println(meetingRoom.getuId());
 									out.print("<td>");
-									out.print("<input type='button' class=' fa fa-edit btn btn-success' onclick='openEvent1()' id='edit' name='"
-									+ meetingRoom.getuId() + "'> ");
+									out.print("<button type='button' class=' fa fa-edit btn btn-success' onclick='openEvent1(this)' id='edit"
+									+ (count++) + "' name='" + meetingRoom.getuId() + "'> </button>");
 									out.println("&nbsp");
-									out.print("<input type='button' class=' fa fa-trash btn btn-danger' onclick='openEvent2()' id='delete' name='"
-									+ meetingRoom.getuId() + "'>");
+									out.print("<button type='button' class=' fa fa-trash btn btn-danger' onclick='openEvent2(this)' id='delete"
+									+ (count++) + "name='" + meetingRoom.getuId() + "'></button>");
 									out.print("</td>");
 
 									out.print("</tr>");
+
 								}
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
 							%>
-							
-							<!-- 'window.location = '" + "editRoom.jsp?room_id=" + meetingRoom.getuId() + "' -->
 						</table>
 
 
@@ -252,17 +247,19 @@ td, th {
 	</br>
 
 	<script type="text/javascript">
-		function openEvent1() {
+		function openEvent1(id) {
 			console.log("In function open event 1");
-			var no1 = document.getElementById("edit").name;
-			console.log("room id : " + no1);
+			var no1 = id.getAttribute("name");
+			console.log(no1);
+			//var no1 = document.getElementById("edit").name;
+			//console.log("room id : " + String(id));
 			window.location = "editRoom.jsp?room_id=" + no1;
 
 		}
 
-		function openEvent2() {
-			consol.log("In function open event 1");
-			var no1 = document.getElementById("delete").name;
+		function openEvent2(id) {
+			consol.log("In function open event 2");
+			var no1 = id.getAttribute("name");
 			console.log("room id : " + no1);
 			window.location = "editRoom.jsp?room_id=" + no1;
 
