@@ -13,6 +13,8 @@ public interface RoomDAO {
 	Room fetchRoomById(String roomId);
 
 	Room updateRoom(Room meetingRoom);
+	
+	int deleteRoom(String roomId);
 
 	static RoomDAO getInstance() {
 		return new RoomDAOImpl();

@@ -191,9 +191,7 @@ body {
 				</div>
 
 				<div class="form-group ">
-					<label for="meetingId" class="font-weight-bold"
-						style="font-family: Georgia, 'Times New Roman', Times, serif;">MeetingRoom
-						Id</label> <input type="hidden"
+					<input type="hidden"
 						class="form-control card border-danger mb-3" id="meetingId"
 						name="meetingId" value=" <%=meetingRoom.getuId()%> ">
 					<div class="valid-feedback">Valid.</div>

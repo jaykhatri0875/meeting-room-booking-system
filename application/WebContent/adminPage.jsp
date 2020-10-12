@@ -208,7 +208,7 @@ td, th {
 									+ (count++) + "' name='" + meetingRoom.getuId() + "'> </button>");
 									out.println("&nbsp");
 									out.print("<button type='button' class=' fa fa-trash btn btn-danger' onclick='openEvent2(this)' id='delete"
-									+ (count++) + "name='" + meetingRoom.getuId() + "'></button>");
+									+ (count++) + "' name='" + meetingRoom.getuId() + "'></button>");
 									out.print("</td>");
 
 									out.print("</tr>");
@@ -262,11 +262,14 @@ td, th {
 		}
 
 		function openEvent2(id) {
-			consol.log("In function open event 2");
+			console.log("In function open event 2");
 			var no1 = id.getAttribute("name");
 			console.log("room id : " + no1);
-			window.location = "editRoom.jsp?room_id=" + no1;
-
+			//var decision = confirm("Are you sure you want to delete ?");
+			//if(decision == true)
+				window.location = "deleteRoom.jsp?room_id=" + no1;
+			//else
+				//window.location = "adminPage.jsp";
 		}
 	</script>
 

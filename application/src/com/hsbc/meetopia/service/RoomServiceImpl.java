@@ -54,4 +54,9 @@ public class RoomServiceImpl implements RoomService {
 		return this.dao.fetchRoomById(roomId);
 	}
 
+	@Override
+	public int deleteRoom(String roomId) {
+		return this.dao.deleteRoom(roomId);
+	}
+
 }

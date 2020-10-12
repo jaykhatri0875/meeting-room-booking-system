@@ -11,6 +11,7 @@ package com.hsbc.meetopia.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,6 +35,9 @@ public class RoomDAOImpl implements RoomDAO {
 
 	private final static String UPDATE_MEETINGROOM = "update meeting_room set capacity = ?, rating = ?, perhour_cost = ? where uid = ?";
 	private final static String UPDATE_AMENITIES = "update amenities set projector = ?, wifiConnection = ?, conferenceCallFacility = ?, whiteboard = ?, waterDispenser = ?, tv = ?, coffeeMachine = ? where uid = ?";
+	
+	private final static String DELETE_AMENITIES = "delete from amenities where uid = ?";
+	private final static String DELETE_MEETINGROOM = "delete from meeting_room where uid = ?";
 
 	@Override
 	public Room createRoom(Room meetingRoom) {
@@ -176,6 +180,37 @@ public class RoomDAOImpl implements RoomDAO {
 		}
 
 		return null;
+	}
+
+	@Override
+	public int deleteRoom(String roomId) {
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_AMENITIES);
+			PreparedStatement preparedStatement1 = connection.prepareStatement(DELETE_MEETINGROOM);
+			
+			preparedStatement.setString(1, roomId);
+			int deleteUpdate = preparedStatement.executeUpdate();
+			
+			preparedStatement1.setString(1, roomId);
+			int deleteUpdate1 = preparedStatement1.executeUpdate();
+			
+			if(deleteUpdate > 0)
+				System.out.println("amenitity deleted");
+			if(deleteUpdate1 > 0)
+				System.out.println("meeting deleted");
+			
+			if(deleteUpdate > 0 && deleteUpdate1 > 0) {
+				System.out.println("Deleted");
+				return 1;
+			}else
+				System.out.println("not deleted");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 
 }

@@ -12,6 +12,8 @@ public interface RoomService {
 	Collection<Room> fetchAllRooms();
 
 	Room fetchRoomById(String roomId);
+	
+	int deleteRoom(String roomId);
 
 	int updateRoom(String meetingId, int capacity, int ratings, int cost, int projector, int wifi, int tv, int conCall,
 			int whiteboard, int waterDispenser, int coffeeMachine);
