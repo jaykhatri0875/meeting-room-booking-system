@@ -1,3 +1,4 @@
+<%@page import="com.hsbc.meetopia.model.User"%>
 <%@page import="com.hsbc.meetopia.model.Meeting"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,10 +21,11 @@
 	<nav class="navbar navbar-light bg-danger">
 		<span class="navbar-brand mb-0 h1 text-white">Meetopia</span>
 	</nav>
-
+	<%User user = (User) request.getAttribute("user"); %>
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1>Member's Page</h1>
+			<h2>Name : <%=user.getName()%></h2>
 		</div>
 	</div>
 

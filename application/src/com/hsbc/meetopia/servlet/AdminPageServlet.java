@@ -30,7 +30,7 @@ public class AdminPageServlet extends HttpServlet {
 		req.setAttribute("rooms", rooms);
 		req.setAttribute("user", user);
 
-		RequestDispatcher rd = req.getRequestDispatcher("Admin_Page.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("adminPage.jsp");
 		rd.forward(req, res);
 	}
 }

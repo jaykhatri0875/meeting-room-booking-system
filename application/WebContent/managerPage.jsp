@@ -38,14 +38,14 @@
 				<div class="card">
 					<div class="card-body bg-danger">
 						<h3 class="card-title text-white">
-							<%
-								user.getName();
+							<%=
+								user.getName()
 							%>
 						</h3>
 					</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><strong>Email: </strong> <%
- 	user.getEmail();
+						<li class="list-group-item"><strong>Email: </strong> <%=
+ 	user.getEmail()
  %></li>
 						<li class="list-group-item"><strong>Last Logged In:
 						</strong> 03:54 PM</li>
