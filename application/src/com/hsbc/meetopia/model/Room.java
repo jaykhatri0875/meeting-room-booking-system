@@ -1,27 +1,22 @@
 package com.hsbc.meetopia.model;
 
 public class Room {
-	
+
 	private String uId;
-	
 	private String userId;
-	
 	private int seatingCapacity;
-	
 	private int ratings;
-	
 	private int costPerHour;
-	
 	private Amenities amenities;
-	
+
 	public Room(String uId, int seatingCapacity, int ratings, int costPerHour, Amenities amenities) {
-		
 		this.uId = uId;
 		this.seatingCapacity = seatingCapacity;
 		this.ratings = ratings;
 		this.costPerHour = costPerHour;
 		this.amenities = amenities;
 	}
+
 	/*
 	 * public MeetingRoom(String meetingName, int seatingCapacity, int ratings, int
 	 * costPerHour, Amenities amenities) {
@@ -30,7 +25,7 @@ public class Room {
 	 * this.ratings = ratings; this.costPerHour = costPerHour; this.amenities =
 	 * amenities; }
 	 */
-	
+
 	/*
 	 * public MeetingRoom(String meetingName, int seatingCapacity, int costPerHour,
 	 * Amenities amenities) {
@@ -39,36 +34,34 @@ public class Room {
 	 * this.costPerHour = costPerHour; this.amenities = amenities; }
 	 */
 
-
-	
 	public int getSeatingCapacity() {
 		return seatingCapacity;
 	}
-	
+
 	public void setSeatingCapacity(int seatingCapacity) {
 		this.seatingCapacity = seatingCapacity;
 	}
-	
+
 	public int getRatings() {
 		return ratings;
 	}
-	
+
 	public void setRatings(int ratings) {
 		this.ratings = ratings;
 	}
-	
+
 	public int getCostPerHour() {
 		return costPerHour;
 	}
-	
+
 	public void setCostPerHour(int costPerHour) {
 		this.costPerHour = costPerHour;
 	}
-	
+
 	public Amenities getAmenities() {
 		return amenities;
 	}
-	
+
 	public void setAmenities(Amenities amenities) {
 		this.amenities = amenities;
 	}
@@ -85,13 +78,10 @@ public class Room {
 		return userId;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "MeetingRoom [uId=" + uId + ", userId=" + userId + ", seatingCapacity="
-				+ seatingCapacity + ", ratings=" + ratings + ", costPerHour=" + costPerHour + ", amenities=" + amenities
-				+ "]";
+		return "MeetingRoom [uId=" + uId + ", userId=" + userId + ", seatingCapacity=" + seatingCapacity + ", ratings="
+				+ ratings + ", costPerHour=" + costPerHour + ", amenities=" + amenities + "]";
 	}
 
 	@Override
@@ -123,9 +113,5 @@ public class Room {
 			return false;
 		return true;
 	}
-	
-	
 
-	
-	
 }
