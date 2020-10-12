@@ -65,7 +65,6 @@ public class MeetingDAOImpl implements MeetingDAO {
 	}
 
 	public Collection<String> fetchMeetingsByUserId(String userId) throws ConnectionFailedException {
-		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			List<String> meetings = new ArrayList<>();
 			try {
@@ -84,7 +83,6 @@ public class MeetingDAOImpl implements MeetingDAO {
 	}
 
 	public Meeting fetchMeetingByMeetingId(String meetingId) throws ConnectionFailedException {
-		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			try {
 				PreparedStatement statement = connection.prepareStatement(SELECT_MEETING_BY_MEETINGID);
