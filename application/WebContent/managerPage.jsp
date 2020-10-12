@@ -88,7 +88,7 @@
 		</div>
 		<div class="row justify-content-center mt-1">
 			<div class="col-3">
-				<a href="./organiseMeeting.jsp" class="btn btn-danger btn-lg">Organise
+				<a href="CreateMeeting" class="btn btn-danger btn-lg">Organise
 					Meeting</a>
 			</div>
 		</div>

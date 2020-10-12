@@ -1,7 +1,9 @@
 package com.hsbc.meetopia.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hsbc.meetopia.model.Meeting;
+import com.hsbc.meetopia.model.Room;
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.MeetingService;
+import com.hsbc.meetopia.service.RoomService;
 
 public class ManagerPageServlet extends HttpServlet {
 

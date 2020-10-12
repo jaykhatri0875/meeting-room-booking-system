@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +17,11 @@ import javax.servlet.http.HttpSession;
 
 import com.hsbc.meetopia.model.Booking;
 import com.hsbc.meetopia.model.Meeting;
+import com.hsbc.meetopia.model.Room;
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.BookingService;
 import com.hsbc.meetopia.service.MeetingService;
+import com.hsbc.meetopia.service.RoomService;
 
 public class OrganiseMeetingServlet extends HttpServlet {
 
@@ -57,5 +62,20 @@ public class OrganiseMeetingServlet extends HttpServlet {
 		if (meetingCreated != null) {
 			response.sendRedirect("ManagerPage");
 		}
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.getRequestDispatcher("organiseMeeting.jsp").include(request, response);
+
+		RoomService roomService = RoomService.getInstance();
+		Collection<Room> rooms = roomService.fetchAllRooms();
+		List<String> roomIds = new ArrayList<>();
+		for (Room room : rooms) {
+			roomIds.add(room.getuId());
+		}
+		request.setAttribute("rooms", roomIds);
 	}
 }
