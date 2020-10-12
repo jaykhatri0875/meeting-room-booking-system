@@ -18,9 +18,10 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-light bg-danger">
-		<span class="navbar-brand mb-0 h1 text-white">Meetopia</span>
-	</nav>
+	<nav class="navbar navbar-light bg-danger justify-content-start">
+      <button class="openbtn btn btn-danger mr-1" onclick="openNav()">&#9776;</button>
+      <a class="navbar-brand mb-0 h1 text-white" href="./index.jsp">Meetopia</a>
+  </nav>
 	
 	<div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -31,11 +32,13 @@
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1>Member's Page</h1>
-			<h2>Name : <%=user.getName()%></h2>
+			<div><h2>Name : <%=user.getName()%></h2></div>
 		</div>
 	</div>
-
-	<div class="container">
+	<div>
+	<h1></h1>
+	</div>
+	<div class="container" style = "margin-top:50px">
 		<h3>Scheduled Meetings</h3>
 		<div class="row">
 			<%

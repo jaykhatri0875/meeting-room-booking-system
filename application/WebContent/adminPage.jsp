@@ -127,7 +127,7 @@ td, th {
 	<!--Starting of navigational bar-->
 
 	<div id="mySidebar" class="sidebar">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;�</a>
 		<a href="createRoom.jsp">CREATE ROOM</a> <a href="./Logout">LOGOUT</a>
 	</div>
 
@@ -137,23 +137,21 @@ td, th {
 	<nav class="navbar navbar-expand-sm bg-danger navbar-dark"
 		style="height: 130px;">
 
-		<button class="openbtn" onclick="openNav()">☰</button>
+		<button class="openbtn" onclick="openNav()">&#9776;</button>
 		<a class="navbar-brand"><h1 style="margin-left: 80px;">Meetopia</h1></a>
 
 
 
 		<!--Displaying admin details-->
 		<div class="card card border-danger mb-3"
-			style="margin-left: 850px; margin-right: 50px; margin-top: 15px; height: 130px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px;">
-			<div class="card-body">
+			style="margin-left: 850px; margin-right: 50px; margin-top: 15px; height: 130px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12px;">
+			<div class="card-body" style=" width:400px">
 				<p class="card-text">
 					Name :
 					<%=user.getName()%></p>
 				<p class="card-text">
 					Email ID :
 					<%=user.getEmail()%></p>
-				<p class="card-text">last logged in</p>
-
 			</div>
 		</div>
 
