@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +25,14 @@ public class ManagerPageServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		User user = (User) session.getAttribute("user");
 
+		Cookie cookie = Servlets.getCookie(req, "lastLoggedIn");
+
 		MeetingService meetingService = MeetingService.getInstance();
 		Collection<Meeting> meetings = meetingService.fetchMeetingsByUserId(user.getuID());
 
 		req.setAttribute("meetings", meetings);
 		req.setAttribute("user", user);
+		req.setAttribute("lastLoggedIn", cookie.getValue());
 
 		RequestDispatcher rd = req.getRequestDispatcher("managerPage.jsp");
 		rd.forward(req, res);

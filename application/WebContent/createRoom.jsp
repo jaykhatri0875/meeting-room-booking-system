@@ -134,7 +134,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
             <a href="adminPage.jsp">ADMIN PAGE</a>
             
-            <a href="index.jsp">LOGOUT</a>
+            <a href="Logout">LOGOUT</a>
       </div>
                         
                            <!--Starting of navigational bar-->

@@ -128,7 +128,7 @@ td, th {
 
 	<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		<a href="Create_Room.jsp">CREATE ROOM</a> <a href="#">LOGOUT</a>
+		<a href="createRoom.jsp">CREATE ROOM</a> <a href="Logout">LOGOUT</a>
 	</div>
 
 
