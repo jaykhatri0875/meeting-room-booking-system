@@ -1,5 +1,5 @@
 <%@page import="java.util.*"%>
-<%@page import="com.hsbc.meetopia.model.Room"%>
+<%@page import="com.hsbc.meetopia.model.*"%>
 <%@page import="com.hsbc.meetopia.service.RoomService"%>
 <%@page import="com.hsbc.meetopia.util.DatabaseUtils"%>
 <%@page import="java.sql.Connection"%>
@@ -111,12 +111,16 @@ td, th {
 
 </head>
 <body>
-	<%
+	<%--
 		Connection con = DatabaseUtils.getRemoteConnection();
 	RoomService meetingRoomService = RoomService.getInstance();
 	Collection<Room> list = meetingRoomService.fetchAllRooms();
 	List<Room> meetingRooms = new ArrayList<>();
 	meetingRooms.addAll(list);
+	--%>
+	<%
+	User user = (User) session.getAttribute("user");
+	Collection<Room> rooms = (Collection) request.getAttribute("rooms");
 	%>
 
 
@@ -142,8 +146,8 @@ td, th {
 		<div class="card card border-danger mb-3"
 			style="margin-left: 850px; margin-right: 50px; margin-top: 15px; height: 130px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px;">
 			<div class="card-body">
-				<p class="card-text">Name</p>
-				<p class="card-text">Email ID</p>
+				<p class="card-text">Name : <%= user.getName() %></p>
+				<p class="card-text">Email ID : <%= user.getEmail() %></p>
 				<p class="card-text">last logged in</p>
 
 			</div>
@@ -191,7 +195,7 @@ td, th {
 							<%
 								try {
 								int count = 1;
-								for (Room meetingRoom : meetingRooms) {
+								for (Room meetingRoom : rooms) {
 
 									out.print("<tr>");
 

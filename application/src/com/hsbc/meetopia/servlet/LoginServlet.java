@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 		if (user != null) {
 			Date now = new Date();
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+			SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
 			String currentTime = format.format(now);
 
 			Cookie cookie = Servlets.getCookie(request, "lastLoggedIn");
