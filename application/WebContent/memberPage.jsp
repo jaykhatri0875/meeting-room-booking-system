@@ -21,6 +21,12 @@
 	<nav class="navbar navbar-light bg-danger">
 		<span class="navbar-brand mb-0 h1 text-white">Meetopia</span>
 	</nav>
+	
+	<div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="./Logout">Logout</a>
+    	</div>
+	
 	<%User user = (User) request.getAttribute("user"); %>
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
@@ -87,11 +93,7 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
-	<!-- LIST.JS -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"
-		integrity="sha512-AYlzeu/5Cexb6uN6uQ0LfoRx33CgMticI4+eEsmPz9QxxyuLr0zd4MA+4hxLqISNs8769A+FVnBCuaMne6d0+w=="
-		crossorigin="anonymous"></script>
+
 
 	<!-- SCRIPT.JS -->
 	<script src="script.js"></script>
