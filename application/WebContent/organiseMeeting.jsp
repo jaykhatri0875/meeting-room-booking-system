@@ -15,9 +15,15 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-light bg-danger">
-		<span class="navbar-brand mb-0 h1 text-white">Meetopia</span>
-	</nav>
+	 <nav class="navbar navbar-light bg-danger justify-content-start">
+      <button class="openbtn btn btn-danger mr-1" onclick="openNav()">&#9776;</button>
+      <a class="navbar-brand mb-0 h1 text-white" href="./index.jsp">Meetopia</a>
+  </nav>
+	
+	<div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="./managerPage.jsp">Manager Page</a>
+    </div>
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
@@ -32,7 +38,7 @@
 		<div class="row justify-content-center">
 			<div class="card col-7">
 				<div class="card-body">
-					<form id="organise-meeting" method="POST" action="CreateMeeting">
+					<form id="organise-meeting" method="POST" action="createMeeting">
 						<div class="form-group">
 							<label for="meetingName">Meeting Name:</label> <input
 								name="meetingName" type="text" class="form-control"
@@ -81,9 +87,17 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="meetingRoom">Meeting Room:</label> <input
-								name="meetingRoom" type="text" class="form-control"
-								id="meetingRoom" placeholder="Enter Meeting Room ID" required>
+						<form action="/action_page.php">
+								<label for="meetingRoom">Meeting Room:</label> 
+								<input list="meetingRoom" type="text" class="form-control"
+								 placeholder="Enter Meeting Room ID" required>
+								<%--add data from database here from database --%>>
+								<datalist id = "meetingRoom">
+									<option value="1000">
+									<option value="2000">
+									<option value="3000">
+								</datalist>
+  	
 						</div>
 						<div class="form-group">
 							<div class="row">
