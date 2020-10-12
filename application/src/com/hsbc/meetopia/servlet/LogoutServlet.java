@@ -3,8 +3,6 @@ package com.hsbc.meetopia.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -26,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").include(request, response);
 
 		Date now = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 		String currentTime = format.format(now);
 
 		Cookie cookie = Servlets.getCookie(request, "lastLoggedIn");
