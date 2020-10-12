@@ -76,23 +76,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#exampleModal">
-								<strong>+</strong> Add Members
-							</button>
-						</div>
-						<div class="form-group">
-							<label>List of Added Members: </label>
-							<div id="selected-members">
-								<small class="text-muted">Click on added members(if any)
-									to remove.</small>
-								<ul class="list-group list">
-									<!-- List of selected members come here -->
-								</ul>
-
-							</div>
-						</div>
-						<div class="form-group">
 								<label for="addMember">Add memebers</label> 
 								<input list="addMember" type="text" class="form-control"
 								 placeholder="Add members" required>
@@ -169,46 +152,6 @@
 							Continue</button>
 						<a href="./managerPage.jsp" class="btn btn-danger ml-1">Cancel</a>
 					</form>
-
-					<!-- Add Members Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Select
-										Members</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<div id="available-members">
-										<br>
-										<hr class="mt-0">
-										<small class="text-muted">+ Click on a member(if any)
-											to add to this meeting.</small><br> <small class="text-muted">+
-											Check the list of added members in the form to confirm.</small>
-										<hr>
-										<input type="text" class="search form-control mb-1"
-											placeholder="Search Member by Name/ID">
-										<button class="sort btn btn-primary my-2" data-sort="name">
-											Sort by Name</button>
-										<button class="sort btn btn-primary my-2" data-sort="id">
-											Sort by ID</button>
-										<ul class="list-group list">
-											<!-- List of available members come here -->
-										</ul>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Done</button>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -228,11 +171,6 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
-	<!-- LIST.JS -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"
-		integrity="sha512-AYlzeu/5Cexb6uN6uQ0LfoRx33CgMticI4+eEsmPz9QxxyuLr0zd4MA+4hxLqISNs8769A+FVnBCuaMne6d0+w=="
-		crossorigin="anonymous"></script>
 
 	<!-- SCRIPT.JS -->
 	<script src="script.js"></script>
