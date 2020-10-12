@@ -18,7 +18,9 @@ public class UserServiceImpl implements UserService {
 	public User saveUser(User user) {
 		User user1 = null;
 		try {
-			user1 = this.dao.saveUser(user);
+			if (validateEmailAddress(user.getEmail()) && validatePhone(user.getPhone())) {
+				user1 = this.dao.saveUser(user);
+			}
 		} catch (ConnectionFailedException e) {
 			System.out.println(e.getMessage());
 		}
@@ -39,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User loginUser(String uID, String email) {
 		User user = fetchUserByUID(uID);
-		if (user != null) {
+		if (user != null && validateEmailAddress(email)) {
 			if (user.getEmail().equals(email.toLowerCase())) {
 				return user;
 			}
@@ -56,6 +58,29 @@ public class UserServiceImpl implements UserService {
 			System.out.println(e.getMessage());
 		}
 		return users;
+	}
+
+	/**
+	 * Matching the given email address with regular expression
+	 * 
+	 * @param email
+	 * @return boolean
+	 */
+	public boolean validateEmailAddress(String email) {
+		String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+		return email.matches(regex);
+	}
+
+	/**
+	 * Matching the given phone number with regular expression
+	 * 
+	 * @param phone
+	 * @return boolean
+	 */
+	public boolean validatePhone(long phone) {
+		String phoneNum = "" + phone;
+		String regex = "^[6-9]\\d{9}$";
+		return phoneNum.matches(regex);
 	}
 
 }
