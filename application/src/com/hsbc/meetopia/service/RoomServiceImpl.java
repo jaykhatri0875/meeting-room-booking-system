@@ -1,5 +1,8 @@
 package com.hsbc.meetopia.service;
-
+/*
+	room service layer 
+	it calls dao layer after doing validations 
+*/
 import java.util.Collection;
 
 import com.hsbc.meetopia.dao.RoomDAO;
