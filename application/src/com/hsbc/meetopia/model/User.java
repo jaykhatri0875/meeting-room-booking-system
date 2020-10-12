@@ -33,6 +33,12 @@ public class User {
 		this.credits = credits;
 	}
 
+	public User(String uID, String name) {
+		super();
+		this.uID = uID;
+		this.name = name;
+	}
+
 	public String generateUID() {
 		return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "").substring(0, 5).toUpperCase();
 	}

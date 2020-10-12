@@ -24,7 +24,7 @@ public class ImportUsersServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String file = request.getParameter("filename");
-		System.out.println(file);
+		UserService userService = UserService.getInstance();
 		JSONParser jsonParser = new JSONParser();
 		try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(file));
@@ -37,7 +37,6 @@ public class ImportUsersServlet extends HttpServlet {
 				String role = (String) record.get("role");
 
 				User user = new User(name, email, phone, role);
-				UserService userService = UserService.getInstance();
 				User userCreated = userService.saveUser(user);
 				if (userCreated == null) {
 					flag = false;

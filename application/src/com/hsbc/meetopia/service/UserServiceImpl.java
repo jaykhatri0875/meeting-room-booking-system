@@ -1,4 +1,7 @@
 package com.hsbc.meetopia.service;
+
+import java.util.Collection;
+
 /*
 	user service layer 
 	it calls userDAO layer and passes parameters if details are valid
@@ -29,6 +32,11 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Collection<User> fetchUsers() {
+		return this.dao.fetchUsers();
 	}
 
 }

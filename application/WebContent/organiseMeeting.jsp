@@ -1,3 +1,6 @@
+<%@page import="com.hsbc.meetopia.model.Room"%>
+<%@page import="com.hsbc.meetopia.model.User"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -30,7 +33,10 @@
 			<h1>Organise Meeting</h1>
 		</div>
 	</div>
-
+	<%
+		Collection<String> rooms = (Collection) request.getAttribute("rooms");
+	Collection<User> users = (Collection) request.getAttribute("users");
+	%>
 	<div class="container">
 		<div class="title text-center">
 			<h3>Meeting Details</h3>
@@ -91,11 +97,15 @@
 								list="meetingRoom" type="text" class="form-control"
 								placeholder="Enter Meeting Room ID" required>
 							<%--add data from database here from database --%>
-							>
 							<datalist id="meetingRoom">
-								<option value="1000">
-								<option value="2000">
-								<option value="3000">
+								<%
+									for (String roomId : rooms) {
+								%>
+								<option value=<%=roomId%>>
+									<%
+										}
+									%>
+								
 							</datalist>
 						</div>
 						<div class="form-group">

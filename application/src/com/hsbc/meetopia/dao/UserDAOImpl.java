@@ -1,4 +1,5 @@
 package com.hsbc.meetopia.dao;
+
 /*	
 	DAO layer for Users
 	- it implements userDAO interface , which has below functions
@@ -9,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.util.DatabaseUtils;
@@ -19,6 +23,7 @@ public class UserDAOImpl implements UserDAO {
 
 	private static final String INSERT_QUERY = "insert into users(uid,name,email,phone,role,credits) values(?,?,?,?,?,?)";
 	private static final String SELECT_USER_BY_USERID = "SELECT * from users where uid=?";
+	private static final String SELECT_FROM_USERS = "SELECT * from users";
 
 	@Override
 	public User saveUser(User user) {
@@ -55,6 +60,24 @@ public class UserDAOImpl implements UserDAO {
 							rs.getLong("phone"), rs.getString("role"), rs.getInt("credits"));
 					return user;
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Collection<User> fetchUsers() {
+		if (connection != null) {
+			List<User> users = new ArrayList<>();
+			try {
+				PreparedStatement statement = connection.prepareStatement(SELECT_FROM_USERS);
+				ResultSet rs = statement.executeQuery();
+				while (rs.next()) {
+					users.add(new User(rs.getString("uid"), rs.getString("name")));
+				}
+				return users;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

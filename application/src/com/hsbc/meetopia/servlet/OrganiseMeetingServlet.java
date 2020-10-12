@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.service.BookingService;
 import com.hsbc.meetopia.service.MeetingService;
 import com.hsbc.meetopia.service.RoomService;
+import com.hsbc.meetopia.service.UserService;
 
 public class OrganiseMeetingServlet extends HttpServlet {
 
@@ -68,7 +70,9 @@ public class OrganiseMeetingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("organiseMeeting.jsp").include(request, response);
+		UserService userService = UserService.getInstance();
+		Collection<User> users = userService.fetchUsers();
+		request.setAttribute("users", users);
 
 		RoomService roomService = RoomService.getInstance();
 		Collection<Room> rooms = roomService.fetchAllRooms();
@@ -77,5 +81,8 @@ public class OrganiseMeetingServlet extends HttpServlet {
 			roomIds.add(room.getuId());
 		}
 		request.setAttribute("rooms", roomIds);
+
+		RequestDispatcher rd = request.getRequestDispatcher("organiseMeeting.jsp");
+		rd.forward(request, response);
 	}
 }

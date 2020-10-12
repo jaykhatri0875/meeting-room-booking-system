@@ -1,5 +1,7 @@
 package com.hsbc.meetopia.service;
 
+import java.util.Collection;
+
 import com.hsbc.meetopia.model.User;
 
 public interface UserService {
@@ -13,5 +15,7 @@ public interface UserService {
 	User fetchUserByUID(String uID);
 
 	User loginUser(String uID, String email);
+
+	Collection<User> fetchUsers();
 
 }
