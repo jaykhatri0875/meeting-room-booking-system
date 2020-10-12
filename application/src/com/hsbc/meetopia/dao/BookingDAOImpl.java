@@ -1,5 +1,12 @@
 package com.hsbc.meetopia.dao;
-
+/*
+	this is DAO layer for meetingrooms , it implements below methods from bookingDAO interface
+		- saveBooking :- stores the meeting into the database with parameters timings and host
+		- fetchBookingByUID :- fetches the booking details based on its unique id
+		- fetchBookings:- fetches all the meetings 
+		
+	
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
