@@ -1,5 +1,8 @@
 package com.hsbc.meetopia.service;
-
+/*
+	user service layer 
+	it calls userDAO layer and passes parameters if details are valid
+*/
 import com.hsbc.meetopia.dao.UserDAO;
 import com.hsbc.meetopia.model.User;
 
