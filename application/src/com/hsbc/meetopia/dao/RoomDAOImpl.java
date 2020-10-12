@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.Amenities;
 import com.hsbc.meetopia.model.Room;
 import com.hsbc.meetopia.util.DatabaseUtils;
@@ -35,7 +36,7 @@ public class RoomDAOImpl implements RoomDAO {
 
 	private final static String UPDATE_MEETINGROOM = "update meeting_room set capacity = ?, rating = ?, perhour_cost = ? where uid = ?";
 	private final static String UPDATE_AMENITIES = "update amenities set projector = ?, wifiConnection = ?, conferenceCallFacility = ?, whiteboard = ?, waterDispenser = ?, tv = ?, coffeeMachine = ? where uid = ?";
-	
+
 	private final static String DELETE_AMENITIES = "delete from amenities where uid = ?";
 	private final static String DELETE_MEETINGROOM = "delete from meeting_room where uid = ?";
 
@@ -69,12 +70,11 @@ public class RoomDAOImpl implements RoomDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
 	@Override
-	public Collection<Room> fetchAllRooms() {
+	public Collection<Room> fetchAllRooms() throws ConnectionFailedException {
 		List<Room> meetingRooms = new ArrayList<>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SELECT_FROM_MEETINGROOM);
@@ -104,8 +104,7 @@ public class RoomDAOImpl implements RoomDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return null;
+		throw new ConnectionFailedException("While fetching rooms");
 	}
 
 	@Override
@@ -144,7 +143,7 @@ public class RoomDAOImpl implements RoomDAO {
 	}
 
 	@Override
-	public Room fetchRoomById(String roomId) {
+	public Room fetchRoomById(String roomId) throws ConnectionFailedException {
 		try {
 			PreparedStatement statement = connection.prepareStatement(SELECT_MEETINGRROM_BY_ID);
 			statement.setString(1, roomId);
@@ -178,38 +177,37 @@ public class RoomDAOImpl implements RoomDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return null;
+		throw new ConnectionFailedException("While fetching rooms by ID");
 	}
 
 	@Override
 	public int deleteRoom(String roomId) {
-		
+
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_AMENITIES);
 			PreparedStatement preparedStatement1 = connection.prepareStatement(DELETE_MEETINGROOM);
-			
+
 			preparedStatement.setString(1, roomId);
 			int deleteUpdate = preparedStatement.executeUpdate();
-			
+
 			preparedStatement1.setString(1, roomId);
 			int deleteUpdate1 = preparedStatement1.executeUpdate();
-			
-			if(deleteUpdate > 0)
+
+			if (deleteUpdate > 0)
 				System.out.println("amenitity deleted");
-			if(deleteUpdate1 > 0)
+			if (deleteUpdate1 > 0)
 				System.out.println("meeting deleted");
-			
-			if(deleteUpdate > 0 && deleteUpdate1 > 0) {
+
+			if (deleteUpdate > 0 && deleteUpdate1 > 0) {
 				System.out.println("Deleted");
 				return 1;
-			}else
+			} else
 				System.out.println("not deleted");
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return 0;
 	}
 

@@ -1,4 +1,5 @@
 package com.hsbc.meetopia.service;
+
 /*
 	room service layer 
 	it calls dao layer after doing validations 
@@ -6,6 +7,7 @@ package com.hsbc.meetopia.service;
 import java.util.Collection;
 
 import com.hsbc.meetopia.dao.RoomDAO;
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.Amenities;
 import com.hsbc.meetopia.model.Room;
 
@@ -33,7 +35,13 @@ public class RoomServiceImpl implements RoomService {
 
 	@Override
 	public Collection<Room> fetchAllRooms() {
-		return this.dao.fetchAllRooms();
+		Collection<Room> rooms = null;
+		try {
+			rooms = this.dao.fetchAllRooms();
+		} catch (ConnectionFailedException e) {
+			System.out.println(e.getMessage());
+		}
+		return rooms;
 	}
 
 	@Override
@@ -51,7 +59,13 @@ public class RoomServiceImpl implements RoomService {
 
 	@Override
 	public Room fetchRoomById(String roomId) {
-		return this.dao.fetchRoomById(roomId);
+		Room room = null;
+		try {
+			room = this.dao.fetchRoomById(roomId);
+		} catch (ConnectionFailedException e) {
+			System.out.println(e.getMessage());
+		}
+		return room;
 	}
 
 	@Override

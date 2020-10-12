@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.User;
 import com.hsbc.meetopia.util.DatabaseUtils;
 
@@ -26,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	private static final String SELECT_FROM_USERS = "SELECT * from users";
 
 	@Override
-	public User saveUser(User user) {
+	public User saveUser(User user) throws ConnectionFailedException {
 		if (connection != null) {
 			try (PreparedStatement pStmt = connection.prepareStatement(INSERT_QUERY)) {
 				pStmt.setString(1, user.getuID());
@@ -44,12 +45,11 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("User not inserted");
-		return null;
+		throw new ConnectionFailedException("While user creation");
 	}
 
 	@Override
-	public User fetchUserByUID(String uID) {
+	public User fetchUserByUID(String uID) throws ConnectionFailedException {
 		if (connection != null) {
 			try {
 				PreparedStatement statement = connection.prepareStatement(SELECT_USER_BY_USERID);
@@ -64,11 +64,11 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		throw new ConnectionFailedException("While fetching user by id");
 	}
 
 	@Override
-	public Collection<User> fetchUsers() {
+	public Collection<User> fetchUsers() throws ConnectionFailedException {
 		if (connection != null) {
 			List<User> users = new ArrayList<>();
 			try {
@@ -82,7 +82,7 @@ public class UserDAOImpl implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		throw new ConnectionFailedException("While fetching users");
 	}
 
 }

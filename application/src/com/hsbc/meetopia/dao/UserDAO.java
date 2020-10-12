@@ -2,6 +2,7 @@ package com.hsbc.meetopia.dao;
 
 import java.util.Collection;
 
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.User;
 
 public interface UserDAO {
@@ -10,9 +11,9 @@ public interface UserDAO {
 		return new UserDAOImpl();
 	}
 
-	User saveUser(User user);
+	User saveUser(User user) throws ConnectionFailedException;
 
-	User fetchUserByUID(String uID);
+	User fetchUserByUID(String uID) throws ConnectionFailedException;
 
-	Collection<User> fetchUsers();
+	Collection<User> fetchUsers() throws ConnectionFailedException;
 }

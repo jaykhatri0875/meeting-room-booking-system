@@ -1,4 +1,5 @@
 package com.hsbc.meetopia.dao;
+
 /*
 	this is DAO layer for meetingrooms , it implements below methods from bookingDAO interface
 		- saveBooking :- stores the meeting into the database with parameters timings and host
@@ -16,18 +17,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.hsbc.meetopia.exception.BookingNotFoundException;
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.Booking;
 import com.hsbc.meetopia.util.DatabaseUtils;
 
 public class BookingDAOImpl implements BookingDAO {
+
+	Connection connection = DatabaseUtils.getRemoteConnection();
 
 	private static final String INSERT_QUERY = "insert into booking_info(uid,room_no,date,start_time,end_time,booked_by) values(?,?,?,?,?,?)";
 	private static final String SELECT_QUERY = "select * from booking_info";
 	private static final String SELECT_BY_UID_QUERY = "select * from booking_info where uid=?;";
 
 	@Override
-	public Booking saveBooking(Booking booking) {
-		Connection connection = DatabaseUtils.getRemoteConnection();
+	public Booking saveBooking(Booking booking) throws ConnectionFailedException {
 		if (connection != null) {
 			try (PreparedStatement pStmt = connection.prepareStatement(INSERT_QUERY)) {
 				pStmt.setString(1, booking.getuID());
@@ -45,8 +48,7 @@ public class BookingDAOImpl implements BookingDAO {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Booking not inserted");
-		return null;
+		throw new ConnectionFailedException("While booking creation");
 	}
 
 	@Override

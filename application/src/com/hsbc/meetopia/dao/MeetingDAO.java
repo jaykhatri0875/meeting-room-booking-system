@@ -2,6 +2,7 @@ package com.hsbc.meetopia.dao;
 
 import java.util.Collection;
 
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.Meeting;
 
 public interface MeetingDAO {
@@ -10,9 +11,9 @@ public interface MeetingDAO {
 		return new MeetingDAOImpl();
 	}
 
-	Meeting createMeeting(Meeting meeting);
+	Meeting createMeeting(Meeting meeting) throws ConnectionFailedException;
 
-	Collection<String> fetchMeetingsByUserId(String userId);
+	Collection<String> fetchMeetingsByUserId(String userId) throws ConnectionFailedException;
 
-	Meeting fetchMeetingByMeetingId(String meetingId);
+	Meeting fetchMeetingByMeetingId(String meetingId) throws ConnectionFailedException;
 }

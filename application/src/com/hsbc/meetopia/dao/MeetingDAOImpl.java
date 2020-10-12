@@ -1,4 +1,5 @@
 package com.hsbc.meetopia.dao;
+
 /*
 	this is meeting DAO layer which implements below methods from meetingDAO interface:
 		- createMeeting :-  it stores new scheduled meeting
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.hsbc.meetopia.exception.ConnectionFailedException;
 import com.hsbc.meetopia.model.Booking;
 import com.hsbc.meetopia.model.Meeting;
 import com.hsbc.meetopia.util.DatabaseUtils;
@@ -31,7 +33,7 @@ public class MeetingDAOImpl implements MeetingDAO {
 			+ "booking_info.date,booking_info.start_time,booking_info.end_time,booking_info.booked_by from meeting left join booking_info on "
 			+ "meeting.booking_info = booking_info.uid where meeting.uid=?";
 
-	public Meeting createMeeting(Meeting meeting) {
+	public Meeting createMeeting(Meeting meeting) throws ConnectionFailedException {
 		if (connection != null) {
 			try {
 				// connection.setAutoCommit(false);
@@ -59,11 +61,10 @@ public class MeetingDAOImpl implements MeetingDAO {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Meeting not inserted");
-		return null;
+		throw new ConnectionFailedException("While meeting creation");
 	}
 
-	public Collection<String> fetchMeetingsByUserId(String userId) {
+	public Collection<String> fetchMeetingsByUserId(String userId) throws ConnectionFailedException {
 		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			List<String> meetings = new ArrayList<>();
@@ -79,10 +80,10 @@ public class MeetingDAOImpl implements MeetingDAO {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		throw new ConnectionFailedException("While fetching meetings by userId");
 	}
 
-	public Meeting fetchMeetingByMeetingId(String meetingId) {
+	public Meeting fetchMeetingByMeetingId(String meetingId) throws ConnectionFailedException {
 		Connection connection = DatabaseUtils.getRemoteConnection();
 		if (connection != null) {
 			try {
@@ -101,6 +102,6 @@ public class MeetingDAOImpl implements MeetingDAO {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		throw new ConnectionFailedException("While fetching meetings by meetingId");
 	}
 }
