@@ -1,5 +1,10 @@
 package com.hsbc.meetopia.dao;
-
+/*
+	this is meeting DAO layer which implements below methods from meetingDAO interface:
+		- createMeeting :-  it stores new scheduled meeting
+		- fetchmeetingBYUserID :- fetches meetings of a user from userID
+		- fetchMeetingbyMeetingID :- fetch meeting by unique meetingId
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
