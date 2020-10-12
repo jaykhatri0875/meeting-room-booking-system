@@ -119,7 +119,7 @@ td, th {
 	meetingRooms.addAll(list);
 	--%>
 	<%
-	User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 	Collection<Room> rooms = (Collection) request.getAttribute("rooms");
 	%>
 
@@ -128,7 +128,7 @@ td, th {
 
 	<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		<a href="Create_Room.jsp">CREATE ROOM</a> <a href="#">LOGOUT</a>
+		<a href="createRoom.jsp">CREATE ROOM</a> <a href="./Logout">LOGOUT</a>
 	</div>
 
 
@@ -146,8 +146,12 @@ td, th {
 		<div class="card card border-danger mb-3"
 			style="margin-left: 850px; margin-right: 50px; margin-top: 15px; height: 130px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px;">
 			<div class="card-body">
-				<p class="card-text">Name : <%= user.getName() %></p>
-				<p class="card-text">Email ID : <%= user.getEmail() %></p>
+				<p class="card-text">
+					Name :
+					<%=user.getName()%></p>
+				<p class="card-text">
+					Email ID :
+					<%=user.getEmail()%></p>
 				<p class="card-text">last logged in</p>
 
 			</div>
@@ -267,9 +271,9 @@ td, th {
 			console.log("room id : " + no1);
 			//var decision = confirm("Are you sure you want to delete ?");
 			//if(decision == true)
-				window.location = "deleteRoom.jsp?room_id=" + no1;
+			window.location = "deleteRoom.jsp?room_id=" + no1;
 			//else
-				//window.location = "adminPage.jsp";
+			//window.location = "adminPage.jsp";
 		}
 	</script>
 
