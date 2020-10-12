@@ -7,6 +7,7 @@
 3. Allows easy management among admin, manager and member for performing room booking
 4. Servlets are connected to JSP files to act as a controller
 5. All jar files are available in `application`
+6. Database connection config is added in the `util` package
 
 
 ## Branch Significance
@@ -32,6 +33,6 @@
 
 ## Troubleshoot Hints
 
-1. Clean and build the project
+1. Clean and build the project via `Project` -> `Clean`
 2. Clean the server published resources
 3. Run the project via `Run As` -> `Run on Server`
