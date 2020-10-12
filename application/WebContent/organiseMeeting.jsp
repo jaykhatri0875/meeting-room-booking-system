@@ -93,6 +93,17 @@
 							</div>
 						</div>
 						<div class="form-group">
+								<label for="addMember">Add memebers</label> 
+								<input list="addMember" type="text" class="form-control"
+								 placeholder="Add members" required>
+								<%--add data from database here from database --%>>
+								<datalist id = "addMember">
+									<option value="1000">
+									<option value="2000">
+									<option value="3000">
+								</datalist>
+						</div>
+						<div class="form-group">
 							<label for="meetingRoom">Meeting Room:</label> <input
 								list="meetingRoom" type="text" class="form-control"
 								placeholder="Enter Meeting Room ID" required>
