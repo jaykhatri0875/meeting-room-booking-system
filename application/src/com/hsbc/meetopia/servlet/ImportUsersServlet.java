@@ -38,13 +38,12 @@ public class ImportUsersServlet extends HttpServlet {
 
 				User user = new User(name, email, phone, role);
 				User userCreated = userService.saveUser(user);
-				if (userCreated == null) {
-					flag = false;
+				if (userCreated != null) {
+					System.out.println("User added with User ID: " + userCreated.getuID() + " and Email: "
+							+ userCreated.getEmail());
 				}
 			}
-			if (flag == true) {
-				response.sendRedirect("login.jsp");
-			}
+			response.sendRedirect("login.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
